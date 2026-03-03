@@ -1427,14 +1427,14 @@
     try {
       // Validate the token works
       const res = await fetch('https://api.github.com/user', {
-        headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github.v3+json' },
+        headers: { Authorization: `token ${token}`, Accept: 'application/vnd.github.v3+json' },
       });
       if (!res.ok) throw new Error('Token is invalid or expired. Please check and try again.');
 
       // Verify it has access to the repo
       const fullRepo = `${githubUsername}/${createdRepoName}`;
       const repoRes = await fetch(`https://api.github.com/repos/${fullRepo}`, {
-        headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github.v3+json' },
+        headers: { Authorization: `token ${token}`, Accept: 'application/vnd.github.v3+json' },
       });
       if (!repoRes.ok) throw new Error(`Could not access ${fullRepo}. Please try logging in again.`);
 
