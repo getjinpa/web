@@ -14,6 +14,7 @@ const {
   name,
   slug,
   description,
+  thumbnail,
   preview = '#',
   category,
   features,
@@ -131,24 +132,36 @@ const categoryLabel = categoryLabels[category] ?? category;
 <article class:list={['template-card', 'card', { 'is-coming-soon': comingSoon }]} data-category={category}>
   <!-- Thumbnail -->
   <div class="template-thumbnail">
-    <div class="template-thumb-bg" style={gradientStyle}>
-      <div class="template-thumb-icon">
-        <svg
-          width="48"
-          height="48"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          aria-hidden="true"
-        >
-          <Fragment set:html={iconHtml} />
-        </svg>
+    {thumbnail ? (
+      <img
+        src={thumbnail}
+        alt={`${name} template preview`}
+        class="template-thumb-screenshot"
+        width={640}
+        height={400}
+        loading="lazy"
+        decoding="async"
+      />
+    ) : (
+      <div class="template-thumb-bg" style={gradientStyle}>
+        <div class="template-thumb-icon">
+          <svg
+            width="48"
+            height="48"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <Fragment set:html={iconHtml} />
+          </svg>
+        </div>
+        <div class="template-thumb-name">{name}</div>
       </div>
-      <div class="template-thumb-name">{name}</div>
-    </div>
+    )}
 
     {!comingSoon && preview !== '#' && (
       <div class="template-thumbnail-overlay">
@@ -247,6 +260,20 @@ const categoryLabel = categoryLabels[category] ?? category;
 
   .template-card:hover .template-thumb-icon {
     transform: translateY(-3px);
+  }
+
+  /* Screenshot thumbnail — anchored to the top so header + hero is always shown */
+  .template-thumb-screenshot {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .template-card:hover .template-thumb-screenshot {
+    transform: scale(1.03);
   }
 
   /* ── Hover preview overlay ── */
