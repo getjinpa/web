@@ -9,6 +9,16 @@
       "preview": "https://getjinpa.github.io/jinpa-starter/",
       "category": "blog",
       "features": ["darkMode", "search", "rss", "markdown"]
+    },
+    {
+      "name": "Stillwater",
+      "slug": "dharma-center",
+      "repo": "getjinpa/dhc-stillwater",
+      "description": "A dharma center built for the Hudson Valley — meditation courses, events, teacher pages, and a warm non-sectarian community feel.",
+      "thumbnail": "/thumbnails/stillwater.jpg",
+      "preview": "https://getjinpa.github.io/dhc-stillwater/",
+      "category": "dharma-center",
+      "features": ["events", "programs", "teachers", "responsive"]
     }
   ]
 }
