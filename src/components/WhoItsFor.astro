@@ -1,0 +1,205 @@
+---
+const personas = [
+  {
+    icon: 'monastery',
+    who: 'Monasteries & Nunneries',
+    story: 'A monastery in Mundgod, South India — three thousand monks, no website. A volunteer who studied some English wants to publish their prayer schedule, the abbot\'s upcoming teachings, and photos of their annual Monlam festival.',
+    outcome: 'With Jinpa: he clicks a button, the site is live in 90 seconds. Updated from his phone.',
+  },
+  {
+    icon: 'teacher',
+    who: 'Lamas, Teachers & Dharma Centers',
+    story: 'A Tibetan lama teaches across eight countries. His schedule lives in WhatsApp groups. His students in Toronto run a dharma center that paid $3,000 for a website in 2015 — broken on phones now, developer unreachable, Wix subscription they can barely afford.',
+    outcome: 'With Jinpa: the lama has a clean teacher site. The center migrated in an afternoon. Both free forever.',
+  },
+  {
+    icon: 'artist',
+    who: 'Artists & Artisans',
+    story: 'A thangka painter in McLeod Ganj has sold his work in galleries across Zurich, Paris, and New York. He has no website. New students find him by word of mouth — or not at all. When he\'s gone, his techniques and his lineage will leave almost no digital trace.',
+    outcome: 'With Jinpa: a portfolio online, techniques documented, lineage preserved for anyone who searches.',
+  },
+  {
+    icon: 'writer',
+    who: 'Writers, Bloggers & Documentarians',
+    story: 'A Tibetan woman in Toronto writes about growing up between two worlds — Tibetan at home, Canadian outside. She publishes to Instagram. The algorithm buries it. In five years, those posts may be gone entirely.',
+    outcome: 'With Jinpa: her writing has a permanent home. Searchable. Citable. Hers.',
+  },
+];
+---
+
+<section class="who-section section" id="who">
+  <div class="container">
+    <div class="section-header">
+      <h2>Built for every Tibetan voice</h2>
+      <p>Whether you lead a monastery or paint thangkas, teach dharma or write poetry — Jinpa gives every corner of Tibetan culture a professional home on the web, free.</p>
+    </div>
+
+    <div class="personas-grid">
+      {personas.map((p, i) => (
+        <div class="persona-card" style={`animation-delay: ${i * 0.1}s`}>
+          <div class="persona-icon">
+            {p.icon === 'monastery' && (
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 21h18"/>
+                <path d="M5 21V7l7-4 7 4v14"/>
+                <path d="M9 21v-6h6v6"/>
+                <path d="M12 3v4"/>
+                <path d="M10 10h4"/>
+              </svg>
+            )}
+            {p.icon === 'teacher' && (
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="8" r="4"/>
+                <path d="M12 14c-5 0-8 2-8 4v1h16v-1c0-2-3-4-8-4z"/>
+                <path d="M17 3l2 2-2 2"/>
+                <path d="M19 5h-4"/>
+              </svg>
+            )}
+            {p.icon === 'artist' && (
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                <circle cx="8.5" cy="8.5" r="1.5"/>
+                <polyline points="21 15 16 10 5 21"/>
+              </svg>
+            )}
+            {p.icon === 'writer' && (
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+              </svg>
+            )}
+          </div>
+
+          <div class="persona-body">
+            <h3 class="persona-who">{p.who}</h3>
+            <p class="persona-story">{p.story}</p>
+            <div class="persona-outcome">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              <span>{p.outcome}</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="who-footer">
+      <p>A website isn't just a website for these communities. It's how the next generation of Tibetans finds their monastery. It's how a teacher's wisdom outlasts the people in the room. It's how an artist's work outlives the gallery wall. It's how a writer's voice carries further than the diaspora kitchen table.</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .who-section {
+    background: var(--bg-surface-raised);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .personas-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-xl);
+    margin-bottom: var(--space-3xl);
+  }
+
+  .persona-card {
+    display: flex;
+    gap: var(--space-lg);
+    padding: var(--space-2xl);
+    background: var(--bg-page);
+    border-radius: var(--border-radius-xl);
+    border: 1px solid var(--border-color);
+    transition: border-color var(--transition-slow), box-shadow var(--transition-slow);
+  }
+
+  .persona-card:hover {
+    border-color: var(--color-primary-200);
+    box-shadow: var(--shadow-lg);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .persona-card:hover {
+      border-color: rgba(37, 99, 235, 0.3);
+    }
+  }
+
+  .persona-icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: var(--border-radius-lg);
+    background: var(--color-primary-50);
+    color: var(--color-primary);
+    padding: 0.625rem;
+    margin-top: 0.125rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .persona-icon {
+      background: rgba(37, 99, 235, 0.15);
+    }
+  }
+
+  .persona-body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .persona-who {
+    font-size: var(--text-base);
+    font-weight: 700;
+    margin-bottom: var(--space-sm);
+    color: var(--text-primary);
+  }
+
+  .persona-story {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-md);
+  }
+
+  .persona-outcome {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-xs);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--color-success);
+    line-height: var(--leading-relaxed);
+  }
+
+  .persona-outcome svg {
+    flex-shrink: 0;
+    margin-top: 0.2rem;
+  }
+
+  .who-footer {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .who-footer p {
+    font-size: var(--text-base);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+    font-style: italic;
+  }
+
+  @media (max-width: 768px) {
+    .personas-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .persona-card {
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+  }
+</style>

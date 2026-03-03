@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SetupWizard from '../components/SetupWizard.astro';
+---
+
+<BaseLayout
+  title="Setup"
+  description="Set up your new website in seconds. Connect GitHub and launch your site."
+  currentPage="setup"
+  noFooter={true}
+>
+  <section class="setup-page">
+    <div class="container">
+      <SetupWizard />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .setup-page {
+    padding: var(--space-2xl) 0 var(--space-5xl);
+    min-height: calc(100vh - var(--header-height));
+    background: var(--bg-surface-raised);
+  }
+</style>

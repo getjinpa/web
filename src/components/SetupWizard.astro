@@ -1,0 +1,1503 @@
+---
+---
+
+<div class="wizard-container">
+  <!-- Step Indicators -->
+  <div class="steps" id="wizard-steps">
+    <div class="step active" data-step="1">
+      <div class="step-number">1</div>
+      <span class="step-label">Connect</span>
+    </div>
+    <div class="step-connector" data-connector="1"></div>
+    <div class="step" data-step="2">
+      <div class="step-number">2</div>
+      <span class="step-label">Configure</span>
+    </div>
+    <div class="step-connector" data-connector="2"></div>
+    <div class="step" data-step="3">
+      <div class="step-number">3</div>
+      <span class="step-label">Creating</span>
+    </div>
+    <div class="step-connector" data-connector="3"></div>
+    <div class="step" data-step="4">
+      <div class="step-number">4</div>
+      <span class="step-label">Live!</span>
+    </div>
+  </div>
+
+  <!-- Step 1: Connect GitHub -->
+  <div class="wizard-step" id="step-1">
+    <div class="wizard-step-content">
+      <div class="wizard-icon">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+        </svg>
+      </div>
+      <h2 class="wizard-title">Connect Your GitHub Account</h2>
+      <p class="wizard-description">
+        Jinpa uses GitHub to create and host your website. Your site will live in your GitHub account — you own it completely.
+      </p>
+
+      <div class="auth-section">
+        <button class="btn btn-primary btn-lg" id="connect-github-btn" style="width: 100%;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+          </svg>
+          Login with GitHub
+        </button>
+        <p style="font-size: var(--text-sm); color: var(--text-tertiary); margin-top: var(--space-md); text-align: center;">
+          You will be redirected to GitHub to authorize Jinpa. No passwords or tokens needed.
+        </p>
+
+        <div id="auth-error" class="alert alert-error" hidden>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="15" y1="9" x2="9" y2="15"/>
+            <line x1="9" y1="9" x2="15" y2="15"/>
+          </svg>
+          <span id="auth-error-message"></span>
+        </div>
+
+        <div id="auth-success" class="alert alert-success" hidden>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+            <polyline points="22 4 12 14.01 9 11.01"/>
+          </svg>
+          <span>Connected as <strong id="github-username"></strong></span>
+        </div>
+      </div>
+
+      <div class="wizard-help">
+        <details>
+          <summary>New to GitHub?</summary>
+          <div class="wizard-help-content">
+            <p>GitHub is a free platform for hosting websites. Here is how to get started:</p>
+            <ol>
+              <li>Go to <a href="https://github.com/signup" target="_blank" rel="noopener noreferrer">github.com/signup</a> and create a free account</li>
+              <li>Come back here and click <strong>Login with GitHub</strong></li>
+              <li>Authorize Jinpa — that is it!</li>
+            </ol>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 2: Configure Site -->
+  <div class="wizard-step" id="step-2" hidden>
+    <div class="wizard-step-content">
+      <div class="wizard-icon">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/>
+          <circle cx="12" cy="12" r="3"/>
+        </svg>
+      </div>
+      <h2 class="wizard-title">Configure Your Site</h2>
+      <p class="wizard-description">
+        Choose a name and description for your new website.
+      </p>
+
+      <div class="template-selected" id="selected-template-info">
+        <span class="template-selected-label">Template:</span>
+        <span class="template-selected-name" id="selected-template-name">Starter Blog</span>
+      </div>
+
+      <form id="config-form" class="config-form">
+        <div class="form-group">
+          <label class="form-label" for="site-name">Site Name</label>
+          <input
+            type="text"
+            id="site-name"
+            class="form-input"
+            placeholder="My Awesome Blog"
+            required
+            maxlength="100"
+          />
+          <p class="form-hint">This will be the title of your website.</p>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="site-description">Description</label>
+          <input
+            type="text"
+            id="site-description"
+            class="form-input"
+            placeholder="A blog about things I love"
+            maxlength="200"
+          />
+          <p class="form-hint">A short description for search engines and social sharing.</p>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="repo-name">Repository Name</label>
+          <input
+            type="text"
+            id="repo-name"
+            class="form-input"
+            placeholder="my-awesome-blog"
+            required
+            pattern="[a-zA-Z0-9._-]+"
+          />
+          <p class="form-hint" id="repo-url-preview">
+            Your site will be at: <strong><span id="preview-username">username</span>.github.io/<span id="preview-repo">repo-name</span></strong>
+          </p>
+        </div>
+
+        <div class="domain-note">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="16" x2="12" y2="12"/>
+            <line x1="12" y1="8" x2="12.01" y2="8"/>
+          </svg>
+          <span>You can add a custom domain later through GitHub repository settings.</span>
+        </div>
+
+        <div class="wizard-actions">
+          <button type="button" class="btn btn-secondary" id="back-to-step-1">Back</button>
+          <button type="submit" class="btn btn-primary" id="create-site-btn">
+            Create My Site
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12h14"/>
+              <path d="m12 5 7 7-7 7"/>
+            </svg>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Step 3: Creating -->
+  <div class="wizard-step" id="step-3" hidden>
+    <div class="wizard-step-content creating-content">
+      <div class="creating-animation">
+        <div class="creating-spinner">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="creating-rocket" aria-hidden="true">
+            <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
+            <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
+            <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/>
+            <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>
+          </svg>
+        </div>
+      </div>
+
+      <h2 class="wizard-title">Creating Your Website</h2>
+      <p class="wizard-description" id="creating-status">Starting up...</p>
+
+      <div class="progress-bar" style="margin: var(--space-xl) 0;">
+        <div class="progress-bar-fill" id="creating-progress" style="width: 0%"></div>
+      </div>
+
+      <div class="creating-steps" id="creating-steps">
+        <div class="creating-step" data-creating-step="repo">
+          <div class="creating-step-indicator">
+            <div class="spinner creating-step-spinner"></div>
+            <svg class="creating-step-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: none;">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </div>
+          <span class="creating-step-text">Creating repository</span>
+        </div>
+        <div class="creating-step" data-creating-step="template">
+          <div class="creating-step-indicator">
+            <div class="spinner creating-step-spinner" style="display: none;"></div>
+            <svg class="creating-step-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: none;">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </div>
+          <span class="creating-step-text">Copying template files</span>
+        </div>
+        <div class="creating-step" data-creating-step="config">
+          <div class="creating-step-indicator">
+            <div class="spinner creating-step-spinner" style="display: none;"></div>
+            <svg class="creating-step-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: none;">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </div>
+          <span class="creating-step-text">Updating site configuration</span>
+        </div>
+        <div class="creating-step" data-creating-step="pages">
+          <div class="creating-step-indicator">
+            <div class="spinner creating-step-spinner" style="display: none;"></div>
+            <svg class="creating-step-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: none;">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </div>
+          <span class="creating-step-text">Enabling GitHub Pages</span>
+        </div>
+        <div class="creating-step" data-creating-step="deploy">
+          <div class="creating-step-indicator">
+            <div class="spinner creating-step-spinner" style="display: none;"></div>
+            <svg class="creating-step-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: none;">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </div>
+          <span class="creating-step-text">Deploying your site</span>
+        </div>
+      </div>
+
+      <div id="creating-error" class="alert alert-error" hidden>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="15" y1="9" x2="9" y2="15"/>
+          <line x1="9" y1="9" x2="15" y2="15"/>
+        </svg>
+        <span id="creating-error-message"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 4: Success + Admin Setup -->
+  <div class="wizard-step" id="step-4" hidden>
+    <div class="wizard-step-content success-content">
+      <div class="success-icon">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="12" cy="12" r="10" fill="var(--color-success)" opacity="0.15"/>
+          <circle cx="12" cy="12" r="10" stroke="var(--color-success)" stroke-width="1.5"/>
+          <polyline points="8 12 11 15 16 9" stroke="var(--color-success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="success-checkmark"/>
+        </svg>
+      </div>
+
+      <h2 class="wizard-title">Your Site is Live!</h2>
+      <p class="wizard-description" id="success-message">
+        Congratulations! Your website has been created and is now live on the web.
+      </p>
+
+      <div class="success-url" id="success-url-box">
+        <div class="success-url-label">Your site is live at:</div>
+        <a href="#" id="success-site-url" class="success-url-link" target="_blank" rel="noopener noreferrer">
+          https://username.github.io/repo
+        </a>
+      </div>
+
+      <div class="success-note" id="success-deploy-note">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="12" y1="16" x2="12" y2="12"/>
+          <line x1="12" y1="8" x2="12.01" y2="8"/>
+        </svg>
+        <span>It may take 1-2 minutes for your site to appear while GitHub builds it for the first time.</span>
+      </div>
+
+      <!-- Admin Setup Section — set up admin access right here -->
+      <div class="admin-setup-section" id="admin-setup-section">
+        <h3 class="admin-setup-title">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/></svg>
+          Set Up Admin Access
+        </h3>
+        <p class="admin-setup-desc">
+          Your GitHub account is already connected. Just choose a password to protect your admin panel — you will use this every time you log in.
+        </p>
+
+        <!-- Hidden — pre-filled from OAuth token, not shown to user -->
+        <input type="hidden" id="admin-token" />
+        <span id="admin-repo-name-display" hidden></span>
+        <a href="#" id="create-admin-token-link" hidden></a>
+
+        <div class="form-group">
+          <label class="form-label" for="admin-password">Choose a Password</label>
+          <input type="password" id="admin-password" class="form-input" placeholder="You will use this to log in" autocomplete="new-password" />
+          <p class="form-hint">This password encrypts your token. It never leaves your browser.</p>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="admin-password2">Confirm Password</label>
+          <input type="password" id="admin-password2" class="form-input" placeholder="Type it again" autocomplete="new-password" />
+        </div>
+
+        <div id="admin-setup-error" class="alert alert-error" hidden>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="15" y1="9" x2="9" y2="15"/>
+            <line x1="9" y1="9" x2="15" y2="15"/>
+          </svg>
+          <span id="admin-setup-error-msg"></span>
+        </div>
+
+        <button class="btn btn-primary" id="setup-admin-btn" style="width:100%;">
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/>
+          </svg>
+          Set Up Admin &amp; Open Panel
+        </button>
+
+        <button class="btn btn-ghost btn-sm" id="skip-admin-setup" style="width:100%; margin-top: var(--space-sm);">
+          Skip — I will set this up later in the admin panel
+        </button>
+      </div>
+
+      <!-- Actions shown after admin setup or skip -->
+      <div class="success-actions" id="success-actions" hidden>
+        <a href="#" id="visit-site-btn" class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+            <polyline points="15 3 21 3 21 9"/>
+            <line x1="10" y1="14" x2="21" y2="3"/>
+          </svg>
+          Visit Your Site
+        </a>
+        <a href="#" id="admin-panel-btn" class="btn btn-secondary btn-lg" target="_blank" rel="noopener noreferrer">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
+          Open Admin Panel
+        </a>
+      </div>
+
+      <div class="success-extras">
+        <h3>What is next?</h3>
+        <ul class="success-next-steps">
+          <li>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Edit your content through the admin panel — no code needed
+          </li>
+          <li>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Add a custom domain in your GitHub repository settings
+          </li>
+          <li>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Explore your repository at GitHub to customize further
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .wizard-container {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .wizard-step-content {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-2xl);
+    padding: var(--space-3xl);
+    text-align: center;
+    animation: fadeInUp 0.4s ease;
+  }
+
+  .wizard-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 5rem;
+    height: 5rem;
+    border-radius: var(--border-radius-2xl);
+    background: var(--bg-surface-raised);
+    color: var(--text-primary);
+    margin-bottom: var(--space-xl);
+  }
+
+  .wizard-title {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    margin-bottom: var(--space-sm);
+  }
+
+  .wizard-description {
+    font-size: var(--text-base);
+    color: var(--text-secondary);
+    margin-bottom: var(--space-2xl);
+    line-height: var(--leading-relaxed);
+  }
+
+  /* Auth Section */
+  .auth-section {
+    text-align: left;
+    margin-bottom: var(--space-xl);
+  }
+
+  .auth-method {
+    margin-bottom: var(--space-lg);
+  }
+
+  .auth-method-title {
+    font-size: var(--text-base);
+    font-weight: 600;
+    margin-bottom: var(--space-xs);
+  }
+
+  .auth-method-description {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    margin-bottom: var(--space-lg);
+    line-height: var(--leading-relaxed);
+  }
+
+  .auth-method-description a {
+    font-weight: 500;
+  }
+
+  /* Ensure hidden attribute always hides elements even when CSS sets display */
+  [hidden] { display: none !important; }
+
+  /* Alerts */
+  .alert {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-md);
+    border-radius: var(--border-radius-lg);
+    font-size: var(--text-sm);
+    text-align: left;
+    margin-top: var(--space-md);
+  }
+
+  .alert-error {
+    background: var(--color-error-light);
+    color: var(--color-error);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+  }
+
+  .alert-success {
+    background: var(--color-success-light);
+    color: #065f46;
+    border: 1px solid rgba(16, 185, 129, 0.2);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .alert-error {
+      background: rgba(239, 68, 68, 0.1);
+      border-color: rgba(239, 68, 68, 0.2);
+      color: #fca5a5;
+    }
+    .alert-success {
+      background: rgba(16, 185, 129, 0.1);
+      border-color: rgba(16, 185, 129, 0.2);
+      color: #6ee7b7;
+    }
+  }
+
+  /* Help Section */
+  .wizard-help {
+    text-align: left;
+  }
+
+  .wizard-help summary {
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--text-link);
+    cursor: pointer;
+    padding: var(--space-sm) 0;
+  }
+
+  .wizard-help-content {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+    padding: var(--space-md);
+    background: var(--bg-surface-raised);
+    border-radius: var(--border-radius-lg);
+    margin-top: var(--space-sm);
+  }
+
+  .wizard-help-content ol {
+    padding-left: 1.25rem;
+    margin-top: var(--space-sm);
+  }
+
+  .wizard-help-content li {
+    margin-bottom: var(--space-xs);
+  }
+
+  /* Config Form */
+  .config-form {
+    text-align: left;
+  }
+
+  .template-selected {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-md);
+    background: var(--color-primary-50);
+    border: 1px solid var(--color-primary-100);
+    border-radius: var(--border-radius-full);
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-2xl);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .template-selected {
+      background: rgba(37, 99, 235, 0.1);
+      border-color: rgba(37, 99, 235, 0.2);
+    }
+  }
+
+  .template-selected-label {
+    color: var(--text-tertiary);
+  }
+
+  .template-selected-name {
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+
+  .domain-note {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-md);
+    background: var(--bg-surface-raised);
+    border-radius: var(--border-radius-lg);
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    margin-bottom: var(--space-xl);
+  }
+
+  .wizard-actions {
+    display: flex;
+    gap: var(--space-md);
+  }
+
+  .wizard-actions .btn-primary {
+    flex: 1;
+  }
+
+  /* Creating Step */
+  .creating-content {
+    padding: var(--space-3xl);
+  }
+
+  .creating-animation {
+    margin-bottom: var(--space-xl);
+  }
+
+  .creating-spinner {
+    display: inline-block;
+  }
+
+  .creating-rocket {
+    animation: float 2s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  .creating-steps {
+    text-align: left;
+    max-width: 320px;
+    margin: var(--space-xl) auto 0;
+  }
+
+  .creating-step {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-sm) 0;
+    opacity: 0.4;
+    transition: opacity var(--transition-base);
+  }
+
+  .creating-step.active,
+  .creating-step.completed {
+    opacity: 1;
+  }
+
+  .creating-step-indicator {
+    width: 1.25rem;
+    height: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .creating-step-check {
+    color: var(--color-success);
+  }
+
+  .creating-step-text {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+  }
+
+  .creating-step.completed .creating-step-text {
+    color: var(--text-primary);
+  }
+
+  /* Success */
+  .success-content {
+    padding: var(--space-3xl);
+  }
+
+  .success-icon {
+    margin-bottom: var(--space-xl);
+  }
+
+  .success-checkmark {
+    stroke-dasharray: 24;
+    stroke-dashoffset: 24;
+    animation: checkmark 0.5s ease 0.3s forwards;
+  }
+
+  .success-url {
+    background: var(--bg-surface-raised);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-xl);
+    padding: var(--space-lg) var(--space-xl);
+    margin-bottom: var(--space-lg);
+  }
+
+  .success-url-label {
+    font-size: var(--text-sm);
+    color: var(--text-tertiary);
+    margin-bottom: var(--space-xs);
+  }
+
+  .success-url-link {
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--color-primary);
+    word-break: break-all;
+  }
+
+  .success-note {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-md);
+    background: var(--color-warning-light);
+    border: 1px solid rgba(245, 158, 11, 0.2);
+    border-radius: var(--border-radius-lg);
+    font-size: var(--text-sm);
+    color: #92400e;
+    margin-bottom: var(--space-2xl);
+    text-align: left;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .success-note {
+      background: rgba(245, 158, 11, 0.1);
+      border-color: rgba(245, 158, 11, 0.2);
+      color: #fcd34d;
+    }
+  }
+
+  .success-actions {
+    display: flex;
+    gap: var(--space-md);
+    margin-bottom: var(--space-3xl);
+  }
+
+  .success-actions .btn {
+    flex: 1;
+  }
+
+  .success-extras {
+    text-align: left;
+    padding-top: var(--space-2xl);
+    border-top: 1px solid var(--border-color);
+  }
+
+  .success-extras h3 {
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-md);
+  }
+
+  .success-next-steps {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .success-next-steps li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  .success-next-steps svg {
+    flex-shrink: 0;
+  }
+
+  /* Admin Setup in Success Step */
+  .admin-setup-section {
+    text-align: left;
+    background: var(--bg-surface-raised);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-xl);
+    padding: var(--space-xl);
+    margin-bottom: var(--space-2xl);
+  }
+
+  .admin-setup-title {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    margin-bottom: var(--space-sm);
+  }
+
+  .admin-setup-title svg {
+    color: var(--color-primary);
+  }
+
+  .admin-setup-desc {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-lg);
+  }
+
+  .admin-setup-token-link {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    padding: var(--space-md);
+    margin-bottom: var(--space-lg);
+  }
+
+  .admin-setup-token-link a {
+    font-weight: 600;
+    font-size: var(--text-sm);
+    display: block;
+    margin-bottom: var(--space-xs);
+  }
+
+  .token-scope-hint {
+    font-size: var(--text-xs);
+    color: var(--text-tertiary);
+  }
+
+  .admin-setup-success {
+    text-align: center;
+    padding: var(--space-lg);
+  }
+
+  .admin-setup-success svg {
+    color: var(--color-success);
+    margin-bottom: var(--space-md);
+  }
+
+  .admin-setup-success p {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    margin-bottom: var(--space-lg);
+  }
+
+  .btn-ghost {
+    background: none;
+    border: none;
+    color: var(--text-tertiary);
+    cursor: pointer;
+    font-size: var(--text-sm);
+    padding: var(--space-sm);
+  }
+
+  .btn-ghost:hover {
+    color: var(--text-secondary);
+  }
+
+  @media (max-width: 640px) {
+    .wizard-step-content {
+      padding: var(--space-xl);
+    }
+
+    .success-actions {
+      flex-direction: column;
+    }
+
+    .wizard-actions {
+      flex-direction: column-reverse;
+    }
+
+    .wizard-actions .btn {
+      width: 100%;
+    }
+  }
+</style>
+
+<script>
+  // ======================================
+  // Jinpa Setup Wizard - Client-Side Logic
+  // ======================================
+
+  interface TemplateInfo {
+    name: string;
+    slug: string;
+    repo: string;
+    description: string;
+    thumbnail: string;
+    preview: string;
+    category: string;
+    features: string[];
+  }
+
+  interface TemplatesData {
+    templates: TemplateInfo[];
+  }
+
+  // --- OAuth Config ---
+  const GITHUB_CLIENT_ID = 'Ov23liXz8yefnJ84nHTM';
+  const WORKER_CALLBACK = 'https://jinpa-auth.buddhistapps.workers.dev/callback';
+
+  // --- State ---
+  let currentStep = 1;
+  let githubToken = '';
+  let githubUsername = '';
+  let selectedTemplate: TemplateInfo | null = null;
+
+  // --- DOM References ---
+  const connectBtn = document.getElementById('connect-github-btn') as HTMLButtonElement;
+  const authError = document.getElementById('auth-error') as HTMLDivElement;
+  const authErrorMsg = document.getElementById('auth-error-message') as HTMLSpanElement;
+  const authSuccess = document.getElementById('auth-success') as HTMLDivElement;
+  const usernameDisplay = document.getElementById('github-username') as HTMLElement;
+
+  const siteNameInput = document.getElementById('site-name') as HTMLInputElement;
+  const siteDescInput = document.getElementById('site-description') as HTMLInputElement;
+  const repoNameInput = document.getElementById('repo-name') as HTMLInputElement;
+  const previewUsername = document.getElementById('preview-username') as HTMLElement;
+  const previewRepo = document.getElementById('preview-repo') as HTMLElement;
+  const configForm = document.getElementById('config-form') as HTMLFormElement;
+  const backToStep1 = document.getElementById('back-to-step-1') as HTMLButtonElement;
+  const selectedTemplateName = document.getElementById('selected-template-name') as HTMLElement;
+
+  const creatingProgress = document.getElementById('creating-progress') as HTMLDivElement;
+  const creatingStatus = document.getElementById('creating-status') as HTMLElement;
+  const creatingError = document.getElementById('creating-error') as HTMLDivElement;
+  const creatingErrorMsg = document.getElementById('creating-error-message') as HTMLSpanElement;
+
+  const successSiteUrl = document.getElementById('success-site-url') as HTMLAnchorElement;
+  const visitSiteBtn = document.getElementById('visit-site-btn') as HTMLAnchorElement;
+  const adminPanelBtn = document.getElementById('admin-panel-btn') as HTMLAnchorElement;
+  const successActions = document.getElementById('success-actions') as HTMLDivElement;
+  const adminSetupSection = document.getElementById('admin-setup-section') as HTMLDivElement;
+
+  // Admin setup elements
+  const adminTokenInput = document.getElementById('admin-token') as HTMLInputElement;
+  const adminPw1 = document.getElementById('admin-password') as HTMLInputElement;
+  const adminPw2 = document.getElementById('admin-password2') as HTMLInputElement;
+  const setupAdminBtn = document.getElementById('setup-admin-btn') as HTMLButtonElement;
+  const skipAdminBtn = document.getElementById('skip-admin-setup') as HTMLButtonElement;
+  const adminSetupError = document.getElementById('admin-setup-error') as HTMLDivElement;
+  const adminSetupErrorMsg = document.getElementById('admin-setup-error-msg') as HTMLSpanElement;
+  const createTokenLink = document.getElementById('create-admin-token-link') as HTMLAnchorElement;
+  const adminRepoNameDisplay = document.getElementById('admin-repo-name-display') as HTMLSpanElement;
+
+  // Track created repo info
+  let createdRepoName = '';
+  let createdSiteUrl = '';
+
+  // --- Initialize ---
+  async function init() {
+    // Get template from URL params
+    const params = new URLSearchParams(window.location.search);
+    const templateSlug = params.get('template') || 'starter-blog';
+
+    try {
+      const response = await fetch('/templates.json');
+      const data: TemplatesData = await response.json();
+      selectedTemplate = data.templates.find(t => t.slug === templateSlug) || data.templates[0];
+
+      if (selectedTemplate && selectedTemplateName) {
+        selectedTemplateName.textContent = selectedTemplate.name;
+      }
+    } catch (e) {
+      // Fallback template
+      selectedTemplate = {
+        name: 'Starter Blog',
+        slug: 'starter-blog',
+        repo: 'getjinpa/jinpa-starter',
+        description: 'A clean, minimal blog',
+        thumbnail: '/thumbnails/starter-blog.jpg',
+        preview: 'https://getjinpa.github.io/jinpa-starter/',
+        category: 'blog',
+        features: ['darkMode', 'search', 'rss'],
+      };
+    }
+
+    // Handle returning from GitHub OAuth
+    await handleOAuthCallback();
+  }
+
+  init();
+
+  // --- Step Navigation ---
+  function goToStep(step: number) {
+    currentStep = step;
+
+    // Update step indicators
+    document.querySelectorAll('.step').forEach(el => {
+      const stepNum = parseInt(el.getAttribute('data-step') || '0');
+      el.classList.remove('active', 'completed');
+      if (stepNum === currentStep) el.classList.add('active');
+      if (stepNum < currentStep) el.classList.add('completed');
+    });
+
+    document.querySelectorAll('.step-connector').forEach(el => {
+      const connNum = parseInt(el.getAttribute('data-connector') || '0');
+      el.classList.toggle('completed', connNum < currentStep);
+    });
+
+    // Show/hide step panels
+    for (let i = 1; i <= 4; i++) {
+      const panel = document.getElementById(`step-${i}`);
+      if (panel) panel.hidden = i !== currentStep;
+    }
+  }
+
+  // --- Step 1: GitHub OAuth ---
+  connectBtn?.addEventListener('click', () => {
+    const state = crypto.randomUUID();
+    sessionStorage.setItem('oauth_state', state);
+    const authUrl = new URL('https://github.com/login/oauth/authorize');
+    authUrl.searchParams.set('client_id', GITHUB_CLIENT_ID);
+    authUrl.searchParams.set('scope', 'repo,workflow');
+    authUrl.searchParams.set('redirect_uri', WORKER_CALLBACK);
+    authUrl.searchParams.set('state', state);
+    window.location.href = authUrl.toString();
+  });
+
+  async function handleOAuthCallback() {
+    // Check for OAuth error passed as query param by the Worker
+    const params = new URLSearchParams(window.location.search);
+    const urlError = params.get('error');
+    if (urlError) {
+      const msg = decodeURIComponent(urlError).replace(/_/g, ' ');
+      showAuthError(`GitHub login failed: ${msg}`);
+      // Clean the error param from URL
+      const cleanSearch = window.location.search.replace(/[?&]error=[^&]*/, '').replace(/^\?$/, '');
+      history.replaceState(null, '', window.location.pathname + cleanSearch);
+      return;
+    }
+
+    // Check URL hash for token returned by the Worker
+    const hash = window.location.hash;
+    if (!hash.startsWith('#token=')) return;
+
+    const hashParams = new URLSearchParams(hash.slice(1));
+    const token = hashParams.get('token');
+    const returnedState = hashParams.get('state');
+
+    if (!token) return;
+
+    // Validate CSRF state
+    const savedState = sessionStorage.getItem('oauth_state');
+    if (savedState && returnedState !== savedState) {
+      showAuthError('Security check failed. Please try logging in again.');
+      history.replaceState(null, '', window.location.pathname + window.location.search);
+      return;
+    }
+    sessionStorage.removeItem('oauth_state');
+
+    // Remove token from URL immediately (never in browser history)
+    history.replaceState(null, '', window.location.pathname + window.location.search);
+
+    // Show loading state
+    if (connectBtn) {
+      connectBtn.disabled = true;
+      connectBtn.innerHTML = '<div class="spinner" style="width:1rem;height:1rem;border-width:2px;"></div> Connecting...';
+    }
+    hideAuthError();
+
+    try {
+      const res = await fetch('https://api.github.com/user', {
+        headers: {
+          Authorization: `token ${token}`,
+          Accept: 'application/vnd.github.v3+json',
+        },
+      });
+
+      if (!res.ok) throw new Error('GitHub login failed. Please try again.');
+
+      const user = await res.json();
+      githubToken = token;
+      githubUsername = user.login;
+
+      if (authSuccess) {
+        authSuccess.hidden = false;
+        if (usernameDisplay) usernameDisplay.textContent = githubUsername;
+      }
+      if (previewUsername) previewUsername.textContent = githubUsername;
+
+      setTimeout(() => goToStep(2), 800);
+    } catch (err: any) {
+      showAuthError(err.message || 'Failed to connect to GitHub. Please try again.');
+      if (connectBtn) {
+        connectBtn.disabled = false;
+        connectBtn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg> Login with GitHub`;
+      }
+    }
+  }
+
+  function showAuthError(msg: string) {
+    if (authError && authErrorMsg) {
+      authError.hidden = false;
+      authErrorMsg.textContent = msg;
+    }
+  }
+
+  function hideAuthError() {
+    if (authError) authError.hidden = true;
+  }
+
+  // --- Step 2: Configure ---
+  siteNameInput?.addEventListener('input', () => {
+    const name = siteNameInput.value.trim();
+    const slug = name
+      .toLowerCase()
+      .replace(/[^a-z0-9\s-]/g, '')
+      .replace(/\s+/g, '-')
+      .replace(/-+/g, '-')
+      .substring(0, 60);
+
+    if (repoNameInput && !repoNameInput.dataset.manual) {
+      repoNameInput.value = slug;
+      if (previewRepo) previewRepo.textContent = slug || 'repo-name';
+    }
+  });
+
+  repoNameInput?.addEventListener('input', () => {
+    repoNameInput.dataset.manual = 'true';
+    if (previewRepo) previewRepo.textContent = repoNameInput.value || 'repo-name';
+  });
+
+  backToStep1?.addEventListener('click', () => goToStep(1));
+
+  configForm?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    await createSite();
+  });
+
+  // --- Step 3: Create Site ---
+  async function createSite() {
+    const siteName = siteNameInput?.value.trim() || 'My Site';
+    const siteDesc = siteDescInput?.value.trim() || '';
+    const repoName = repoNameInput?.value.trim() || 'my-site';
+
+    if (!repoName) return;
+
+    goToStep(3);
+
+    const apiHeaders = {
+      Authorization: `token ${githubToken}`,
+      Accept: 'application/vnd.github.v3+json',
+      'Content-Type': 'application/json',
+    };
+
+    try {
+      // Step 3a: Create repository from template
+      updateCreatingStep('repo', 'active', 'Creating repository...', 10);
+
+      if (!selectedTemplate) throw new Error('No template selected.');
+
+      const [templateOwner, templateRepo] = selectedTemplate.repo.split('/');
+
+      const createRes = await fetch(
+        `https://api.github.com/repos/${templateOwner}/${templateRepo}/generate`,
+        {
+          method: 'POST',
+          headers: {
+            ...apiHeaders,
+            Accept: 'application/vnd.github.baptiste-preview+json',
+          },
+          body: JSON.stringify({
+            owner: githubUsername,
+            name: repoName,
+            description: siteDesc,
+            private: false,
+            include_all_branches: false,
+          }),
+        }
+      );
+
+      if (!createRes.ok) {
+        const errData = await createRes.json().catch(() => ({}));
+        if (createRes.status === 422 && errData.message?.includes('already exists')) {
+          throw new Error(`A repository named "${repoName}" already exists in your account. Please go back and choose a different name.`);
+        }
+        if (createRes.status === 404) {
+          throw new Error(`Template repository not found. The template "${selectedTemplate.repo}" may not be set up as a template yet.`);
+        }
+        throw new Error(errData.message || `Failed to create repository (${createRes.status}).`);
+      }
+
+      updateCreatingStep('repo', 'completed', 'Repository created!', 25);
+
+      // Brief pause for GitHub to process
+      await sleep(2000);
+
+      // Step 3b: Template files are already copied by the generate API
+      updateCreatingStep('template', 'active', 'Template files copied...', 40);
+      await sleep(1500);
+      updateCreatingStep('template', 'completed', 'Template files ready!', 50);
+
+      // Step 3c: Update site configuration
+      updateCreatingStep('config', 'active', 'Updating site configuration...', 55);
+
+      const isUserSiteEarly = repoName.toLowerCase() === `${githubUsername.toLowerCase()}.github.io`;
+      const siteUrl = isUserSiteEarly
+        ? `https://${githubUsername}.github.io`
+        : `https://${githubUsername}.github.io/${repoName}`;
+
+      // Update site.config.json in the new repo
+      // Structure: config.site.title, config.site.url, config.site.basePath, etc.
+      //
+      // Detect if this is a user/org site (repo name = username.github.io)
+      // In that case, basePath is empty and URL includes no subpath
+      const isUserSite = repoName.toLowerCase() === `${githubUsername.toLowerCase()}.github.io`;
+
+      try {
+        await updateRepoFile(
+          apiHeaders,
+          repoName,
+          'site.config.json',
+          (content: string) => {
+            try {
+              const config = JSON.parse(content);
+              if (!config.site) config.site = {};
+              config.site.title = siteName;
+              config.site.description = siteDesc;
+              config.site.url = `https://${githubUsername}.github.io`;
+              config.site.basePath = isUserSite ? '' : `/${repoName}/`;
+              // Update SEO title template to use the actual site name
+              if (!config.seo) config.seo = {};
+              config.seo.titleTemplate = `%s — ${siteName}`;
+              // Set the author name from GitHub profile if available
+              if (config.site.author && !config.site.author.name) {
+                config.site.author.name = githubUsername;
+              }
+              return JSON.stringify(config, null, 2) + '\n';
+            } catch {
+              return content;
+            }
+          }
+        );
+      } catch {
+        // File might not exist in all templates, that is OK
+      }
+
+      // No need to update astro.config.mjs — it reads from site.config.json
+      // The basePath and site URL are picked up automatically
+
+      updateCreatingStep('config', 'completed', 'Configuration updated!', 70);
+
+      // Step 3d: Enable GitHub Pages
+      updateCreatingStep('pages', 'active', 'Enabling GitHub Pages...', 75);
+
+      // Try to enable GitHub Pages via the API
+      // First, wait for the default branch to be available
+      await sleep(2000);
+
+      try {
+        // Enable Pages with GitHub Actions as source
+        const pagesRes = await fetch(
+          `https://api.github.com/repos/${githubUsername}/${repoName}/pages`,
+          {
+            method: 'POST',
+            headers: apiHeaders,
+            body: JSON.stringify({
+              build_type: 'workflow',
+            }),
+          }
+        );
+
+        if (!pagesRes.ok && pagesRes.status !== 409) {
+          // 409 means Pages is already enabled
+          // Try legacy source-based approach
+          const pagesRes2 = await fetch(
+            `https://api.github.com/repos/${githubUsername}/${repoName}/pages`,
+            {
+              method: 'POST',
+              headers: apiHeaders,
+              body: JSON.stringify({
+                source: { branch: 'main', path: '/' },
+              }),
+            }
+          );
+          if (!pagesRes2.ok && pagesRes2.status !== 409) {
+            console.warn('Could not enable Pages automatically. User may need to enable it manually.');
+          }
+        }
+      } catch {
+        console.warn('Pages API call failed, may need manual enablement.');
+      }
+
+      updateCreatingStep('pages', 'completed', 'GitHub Pages enabled!', 85);
+
+      // Step 3e: Poll for deployment
+      updateCreatingStep('deploy', 'active', 'Deploying your site...', 90);
+
+      // Wait and poll for deployment
+      let deployed = false;
+      for (let i = 0; i < 30; i++) {
+        await sleep(3000);
+
+        try {
+          const deployRes = await fetch(
+            `https://api.github.com/repos/${githubUsername}/${repoName}/pages`,
+            { headers: apiHeaders }
+          );
+
+          if (deployRes.ok) {
+            const deployData = await deployRes.json();
+            if (deployData.status === 'built') {
+              deployed = true;
+              break;
+            }
+          }
+        } catch {
+          // Continue polling
+        }
+
+        // Update progress incrementally
+        const progressPct = Math.min(90 + i * 0.3, 98);
+        creatingProgress.style.width = `${progressPct}%`;
+      }
+
+      updateCreatingStep('deploy', 'completed', 'Site deployed!', 100);
+
+      // Proceed to success regardless (deployment might still be in progress)
+      await sleep(500);
+      showSuccess(siteUrl, repoName);
+    } catch (err: any) {
+      showCreatingError(err.message || 'An unexpected error occurred. Please try again.');
+    }
+  }
+
+  async function updateRepoFile(
+    headers: Record<string, string>,
+    repoName: string,
+    filePath: string,
+    transform: (content: string) => string
+  ) {
+    // Get current file
+    const getRes = await fetch(
+      `https://api.github.com/repos/${githubUsername}/${repoName}/contents/${filePath}`,
+      { headers }
+    );
+
+    if (!getRes.ok) throw new Error(`File ${filePath} not found.`);
+
+    const fileData = await getRes.json();
+    // Decode base64 content (UTF-8 safe)
+    const rawContent = fileData.content.replace(/\n/g, '');
+    const currentContent = decodeURIComponent(escape(atob(rawContent)));
+    const newContent = transform(currentContent);
+
+    if (newContent === currentContent) return;
+
+    // Update file
+    const updateRes = await fetch(
+      `https://api.github.com/repos/${githubUsername}/${repoName}/contents/${filePath}`,
+      {
+        method: 'PUT',
+        headers,
+        body: JSON.stringify({
+          message: `Configure site settings via Jinpa`,
+          content: btoa(unescape(encodeURIComponent(newContent))),
+          sha: fileData.sha,
+        }),
+      }
+    );
+
+    if (!updateRes.ok) {
+      throw new Error(`Failed to update ${filePath}.`);
+    }
+  }
+
+  function updateCreatingStep(
+    stepName: string,
+    status: 'active' | 'completed',
+    statusText: string,
+    progress: number
+  ) {
+    // Update the step item
+    const stepEl = document.querySelector(`[data-creating-step="${stepName}"]`) as HTMLElement;
+    if (stepEl) {
+      stepEl.classList.remove('active', 'completed');
+      stepEl.classList.add(status);
+
+      const spinner = stepEl.querySelector('.creating-step-spinner') as HTMLElement;
+      const check = stepEl.querySelector('.creating-step-check') as HTMLElement;
+
+      if (status === 'active') {
+        if (spinner) spinner.style.display = '';
+        if (check) check.style.display = 'none';
+      } else {
+        if (spinner) spinner.style.display = 'none';
+        if (check) check.style.display = '';
+      }
+    }
+
+    // Update status text and progress bar
+    if (creatingStatus) creatingStatus.textContent = statusText;
+    if (creatingProgress) creatingProgress.style.width = `${progress}%`;
+  }
+
+  function showCreatingError(msg: string) {
+    if (creatingError && creatingErrorMsg) {
+      creatingError.hidden = false;
+      creatingErrorMsg.textContent = msg;
+    }
+  }
+
+  function showSuccess(siteUrl: string, repoName: string) {
+    goToStep(4);
+    createdRepoName = repoName;
+    createdSiteUrl = siteUrl;
+
+    const adminUrl = `${siteUrl}/admin/`;
+    const fullRepo = `${githubUsername}/${repoName}`;
+
+    if (successSiteUrl) {
+      successSiteUrl.href = siteUrl;
+      successSiteUrl.textContent = siteUrl;
+    }
+
+    if (visitSiteBtn) visitSiteBtn.href = siteUrl;
+    if (adminPanelBtn) adminPanelBtn.href = adminUrl;
+
+    // Pre-fill the admin token with the OAuth token (user doesn't need to enter it)
+    if (adminTokenInput) adminTokenInput.value = githubToken;
+
+    // Show admin setup section, hide action buttons until setup or skip
+    if (adminSetupSection) adminSetupSection.hidden = false;
+    if (successActions) successActions.hidden = true;
+  }
+
+  // --- Admin Setup: Encrypt token and hand off to admin panel ---
+
+  // AES-256-GCM encryption (same as admin panel's Crypto module)
+  const SALT_LEN = 16;
+  const IV_LEN = 12;
+  const PBKDF2_ITERATIONS = 600000;
+
+  async function deriveKey(password: string, salt: BufferSource): Promise<CryptoKey> {
+    const keyMaterial = await crypto.subtle.importKey(
+      'raw',
+      new TextEncoder().encode(password),
+      'PBKDF2',
+      false,
+      ['deriveKey']
+    );
+    return crypto.subtle.deriveKey(
+      { name: 'PBKDF2', salt, iterations: PBKDF2_ITERATIONS, hash: 'SHA-256' },
+      keyMaterial,
+      { name: 'AES-GCM', length: 256 },
+      false,
+      ['encrypt', 'decrypt']
+    );
+  }
+
+  async function encryptToken(plaintext: string, password: string): Promise<string> {
+    const salt = crypto.getRandomValues(new Uint8Array(SALT_LEN));
+    const iv = crypto.getRandomValues(new Uint8Array(IV_LEN));
+    const encoded = new TextEncoder().encode(plaintext);
+    const key = await deriveKey(password, salt);
+    const cipherBuf = await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, key, encoded);
+    const cipher = new Uint8Array(cipherBuf);
+    const combined = new Uint8Array(salt.length + iv.length + cipher.length);
+    combined.set(salt, 0);
+    combined.set(iv, salt.length);
+    combined.set(cipher, salt.length + iv.length);
+    let binary = '';
+    for (let i = 0; i < combined.length; i++) binary += String.fromCharCode(combined[i]);
+    return btoa(binary);
+  }
+
+  setupAdminBtn?.addEventListener('click', async () => {
+    const token = adminTokenInput?.value.trim();
+    const pw1 = adminPw1?.value;
+    const pw2 = adminPw2?.value;
+
+    // Validate
+    if (!token) { showAdminError('GitHub token missing. Please go back and log in again.'); return; }
+    if (!pw1) { showAdminError('Please choose a password.'); return; }
+    if (pw1.length < 4) { showAdminError('Password must be at least 4 characters.'); return; }
+    if (pw1 !== pw2) { showAdminError('Passwords do not match.'); return; }
+
+    setupAdminBtn.disabled = true;
+    setupAdminBtn.textContent = 'Setting up...';
+    hideAdminError();
+
+    try {
+      // Validate the token works
+      const res = await fetch('https://api.github.com/user', {
+        headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github.v3+json' },
+      });
+      if (!res.ok) throw new Error('Token is invalid or expired. Please check and try again.');
+
+      // Verify it has access to the repo
+      const fullRepo = `${githubUsername}/${createdRepoName}`;
+      const repoRes = await fetch(`https://api.github.com/repos/${fullRepo}`, {
+        headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github.v3+json' },
+      });
+      if (!repoRes.ok) throw new Error(`Could not access ${fullRepo}. Please try logging in again.`);
+
+      // Encrypt the token
+      const encrypted = await encryptToken(token, pw1);
+
+      // Build the vault object (same format as admin panel's Auth.setup)
+      const vault = {
+        encrypted,
+        repo: fullRepo,
+        branch: 'main',
+      };
+
+      // Encode vault as URL-safe base64 for hash transfer
+      const vaultB64 = btoa(JSON.stringify(vault));
+
+      // Open admin panel with vault in URL hash
+      // The hash is NEVER sent to the server — it stays client-side only
+      const adminUrl = `${createdSiteUrl}/admin/#/import-vault/${encodeURIComponent(vaultB64)}`;
+
+      // Clear sensitive fields
+      if (adminTokenInput) adminTokenInput.value = '';
+      if (adminPw1) adminPw1.value = '';
+      if (adminPw2) adminPw2.value = '';
+
+      // Show success state
+      adminSetupSection.innerHTML = `
+        <div class="admin-setup-success">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="var(--color-success)" opacity="0.15"/><circle cx="12" cy="12" r="10" stroke="var(--color-success)" stroke-width="1.5"/><polyline points="8 12 11 15 16 9" stroke="var(--color-success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p>Admin access is encrypted and ready. Click below to open your admin panel.</p>
+          <a href="${adminUrl}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+            Open Admin Panel (Pre-Configured)
+          </a>
+        </div>
+      `;
+
+      // Also update the regular admin button to include the vault
+      if (adminPanelBtn) adminPanelBtn.href = adminUrl;
+      if (successActions) successActions.hidden = false;
+    } catch (err: any) {
+      showAdminError(err.message || 'Failed to set up admin access.');
+      setupAdminBtn.disabled = false;
+      setupAdminBtn.innerHTML = `<svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/></svg> Set Up Admin & Open Panel`;
+    }
+  });
+
+  skipAdminBtn?.addEventListener('click', () => {
+    if (adminSetupSection) adminSetupSection.hidden = true;
+    if (successActions) successActions.hidden = false;
+  });
+
+  function showAdminError(msg: string) {
+    if (adminSetupError && adminSetupErrorMsg) {
+      adminSetupError.hidden = false;
+      adminSetupErrorMsg.textContent = msg;
+    }
+  }
+
+  function hideAdminError() {
+    if (adminSetupError) adminSetupError.hidden = true;
+  }
+
+  function sleep(ms: number): Promise<void> {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+</script>

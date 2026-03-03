@@ -1,0 +1,423 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="About — Jinpa" currentPage="about">
+
+  <div class="about-hero">
+    <div class="container">
+      <p class="about-eyebrow">Our mission</p>
+      <h1>Every Tibetan voice deserves a home on the web</h1>
+      <p class="about-lead">
+        Jinpa is a free, open-source website platform built to help Tibetan communities,
+        dharma teachers, artists, and writers get online — simply, permanently, and on their own terms.
+      </p>
+    </div>
+  </div>
+
+  <div class="about-body">
+    <div class="container prose">
+
+      <section class="about-section">
+        <h2>The problem</h2>
+        <p>
+          Tibetan civilization is one of the richest and most complex in human history. A living
+          tradition of philosophy, medicine, art, music, and language that has endured for over
+          a thousand years — practiced today by millions of people across India, Nepal, the West,
+          and increasingly in exile communities everywhere.
+        </p>
+        <p>
+          And yet on the internet — the infrastructure that shapes how the world learns,
+          remembers, and understands — it barely exists.
+        </p>
+
+        <div class="about-stats">
+          <div class="about-stat">
+            <span class="about-stat-n">~6,000</span>
+            <span class="about-stat-label">Tibetan Wikipedia articles</span>
+            <span class="about-stat-sub">Welsh has over 150,000</span>
+          </div>
+          <div class="about-stat">
+            <span class="about-stat-n">&lt;0.01%</span>
+            <span class="about-stat-label">Of AI training data is Tibetan</span>
+            <span class="about-stat-sub">Despite 7 million+ speakers</span>
+          </div>
+          <div class="about-stat">
+            <span class="about-stat-n">0</span>
+            <span class="about-stat-label">Major voice assistants</span>
+            <span class="about-stat-sub">That support Tibetan</span>
+          </div>
+        </div>
+
+        <p>
+          The reasons are many — occupation, suppression, diaspora, the technical barrier of
+          getting online — but the result is the same. Monasteries with no websites. Teachers
+          whose schedules live in WhatsApp groups. Artists whose work exists physically but
+          nowhere on the web. Writers publishing to algorithms that bury their words.
+        </p>
+        <p>
+          A 2026 essay by Thupten Chakrishar documented the scale of this crisis with
+          precision — examining not just the absence of Tibetan content, but how Chinese AI
+          systems are actively filling that vacuum with Beijing's narratives, and how the window
+          to shape what AI knows about Tibet is narrowing fast. We encourage you to
+          <a href="https://chakrishar.com/posts/tibetan-culture-ai-erasure/" target="_blank" rel="noopener noreferrer">read it</a>.
+        </p>
+      </section>
+
+      <section class="about-section">
+        <h2>The opportunity we can actually take</h2>
+        <p>
+          Training an AI model costs millions of dollars. Lobbying technology companies
+          for Tibetan language support takes years. These are real fights worth fighting,
+          and people are fighting them.
+        </p>
+        <p>
+          But there is something else — something every monastery, every teacher, every
+          artist, every blogger can do right now. They can put their work on the web.
+        </p>
+
+        <blockquote class="about-callout">
+          Common Crawl — the web crawl that feeds virtually every major AI system,
+          including GPT, Claude, Gemini, and Llama — indexes billions of pages from across
+          the internet every few months. When a Tibetan monastery publishes their history,
+          when a thangka painter documents their technique, when a Tibetan writer shares
+          their stories — that content enters the training data that shapes what AI knows
+          about the world for decades.
+        </blockquote>
+
+        <p>
+          Every Tibetan website is not just a website. It is a contribution to the permanent
+          record of human culture. It is training data. It is the source material that future
+          AI — and future generations — will learn from.
+        </p>
+        <p>
+          The barrier was never motivation. It was access. Building a website required
+          technical skills most community members don't have, or thousands of dollars that
+          monasteries and cultural organizations couldn't spare. Jinpa removes that barrier entirely.
+        </p>
+      </section>
+
+      <section class="about-section">
+        <h2>How Jinpa helps — including the parts you can't see</h2>
+        <p>
+          In solving this problem, we built something the world had never seen before: the
+          first CMS that runs entirely on GitHub Pages — no servers, no databases, no
+          dependencies. With Jinpa, anyone can go from zero to a professional, live website
+          in 90 seconds. No coding. No cost. No recurring subscription. That's the visible part.
+        </p>
+        <p>
+          The invisible part is what makes Jinpa different from any other free website tool:
+          every Jinpa site is engineered from the ground up to be discovered, indexed, and
+          understood — by search engines, by AI crawlers, and by the systems that will
+          shape the web for generations to come.
+        </p>
+
+        <ul class="about-features">
+          <li>
+            <strong>llms.txt</strong> — a new standard designed specifically for AI crawlers.
+            Every Jinpa site automatically generates a clean, structured overview of its
+            content that LLMs can read and index without rendering JavaScript.
+          </li>
+          <li>
+            <strong>Structured data (JSON-LD)</strong> — every page includes machine-readable
+            Schema.org markup. Search engines and AI systems know exactly what the content is,
+            who created it, when it was published, and what language it's in.
+          </li>
+          <li>
+            <strong>Sitemap</strong> — automatically generated and submitted to Google, Bing,
+            and other search engines so every new page is indexed as fast as possible.
+          </li>
+          <li>
+            <strong>Explicit AI crawler welcome</strong> — Jinpa's robots.txt explicitly welcomes
+            GPTBot, ClaudeBot, PerplexityBot, CCBot (Common Crawl), and every other major AI
+            crawler by name. Most sites either block them or ignore them. Jinpa sites invite them.
+          </li>
+          <li>
+            <strong>Open Graph and RSS</strong> — content spreads correctly across social
+            platforms, news aggregators, and research tools, and is attributed properly.
+          </li>
+          <li>
+            <strong>Static HTML</strong> — no JavaScript rendering required. Content is fully
+            readable by every crawler the moment the page is live. A monastery in Mundgod
+            with slow internet gets the same crawl quality as a multi-million dollar company
+            with a full-time engineering team.
+          </li>
+        </ul>
+
+        <p>
+          A center using an old WordPress install with a slow plugin stack might never get
+          indexed well. A Jinpa site gets everything right by default, automatically, without
+          the site owner ever thinking about it.
+        </p>
+      </section>
+
+      <section class="about-section">
+        <h2>What we're building toward</h2>
+        <p>
+          Jinpa 1.0 solves the access problem. What comes next is a platform built
+          specifically for how Tibetan communities create and share content.
+        </p>
+        <ul class="about-features">
+          <li>
+            <strong>Tibetan font support</strong> — Noto Serif Tibetan and Jomolhari available
+            as default options so bilingual content looks beautiful without any configuration.
+          </li>
+          <li>
+            <strong>Bilingual templates</strong> — designed from the start for content in both
+            Tibetan script and English, with proper text direction and layout handling.
+          </li>
+          <li>
+            <strong>Dharma-specific content types</strong> — structured fields for teachings,
+            lineages, practice schedules, teacher biographies, and event calendars.
+          </li>
+          <li>
+            <strong>More templates</strong> — portfolios for artists, cultural archive templates
+            for NGOs, simple family sites, documentation templates for preservation projects.
+          </li>
+        </ul>
+      </section>
+
+      <section class="about-section">
+        <h2>Who we are</h2>
+        <p>
+          Jinpa is an open-source project built for the Tibetan community, by
+          <a href="https://github.com/vajradog" target="_blank" rel="noopener noreferrer">@vajradog</a>
+          and friends. It runs on GitHub Pages — the free hosting infrastructure that powers
+          millions of sites worldwide — and it will always be free for communities that need it.
+        </p>
+        <p>
+          The code is open. The platform is open. If you're a developer and want to contribute,
+          everything is at <a href="https://github.com/getjinpa" target="_blank" rel="noopener noreferrer">github.com/getjinpa</a>.
+        </p>
+        <p>
+          The mission is simple: every Tibetan voice deserves a home on the web.
+          The window to build that presence is measured in years, not decades.
+          We're making it free.
+        </p>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <section class="about-cta-section">
+    <div class="container">
+      <div class="about-cta-card">
+        <h2>Ready to add your voice?</h2>
+        <p>Create your site in 90 seconds. Free, forever.</p>
+        <a href="/templates" class="btn btn-primary btn-lg">
+          Get Started Free
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* ── Hero ── */
+  .about-hero {
+    background: var(--bg-hero-gradient);
+    padding: var(--space-5xl) 0 var(--space-4xl);
+    text-align: center;
+  }
+
+  .about-eyebrow {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: var(--space-md);
+  }
+
+  .about-hero h1 {
+    font-size: clamp(2rem, 5vw, var(--text-5xl));
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    max-width: 700px;
+    margin: 0 auto var(--space-xl);
+  }
+
+  .about-lead {
+    font-size: var(--text-xl);
+    color: rgba(255,255,255,0.7);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: var(--leading-relaxed);
+  }
+
+  /* ── Body ── */
+  .about-body {
+    padding: var(--space-5xl) 0;
+  }
+
+  .prose {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .about-section {
+    margin-bottom: var(--space-5xl);
+  }
+
+  .about-section h2 {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--space-xl);
+    padding-bottom: var(--space-md);
+    border-bottom: 2px solid var(--color-primary-100);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .about-section h2 {
+      border-color: rgba(37, 99, 235, 0.2);
+    }
+  }
+
+  .about-section p {
+    font-size: var(--text-base);
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: var(--space-lg);
+  }
+
+  .about-section a {
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .about-section a:hover {
+    color: var(--color-primary-700);
+  }
+
+  /* ── Stat block ── */
+  .about-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+    margin: var(--space-2xl) 0;
+    padding: var(--space-2xl);
+    background: var(--bg-surface-raised);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-xl);
+    text-align: center;
+  }
+
+  .about-stat {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .about-stat-n {
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 800;
+    color: var(--color-primary);
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+
+  .about-stat-label {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .about-stat-sub {
+    font-size: var(--text-xs);
+    color: var(--text-tertiary);
+  }
+
+  /* ── Callout quote ── */
+  .about-callout {
+    margin: var(--space-2xl) 0;
+    padding: var(--space-xl) var(--space-2xl);
+    border-left: 3px solid var(--color-primary);
+    background: var(--bg-surface-raised);
+    border-radius: 0 var(--border-radius-lg) var(--border-radius-lg) 0;
+    font-size: var(--text-lg);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--text-primary);
+    line-height: var(--leading-relaxed);
+  }
+
+  /* ── Feature list ── */
+  .about-features {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-xl) 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .about-features li {
+    padding: var(--space-lg);
+    background: var(--bg-surface-raised);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  .about-features li strong {
+    color: var(--text-primary);
+    display: block;
+    margin-bottom: var(--space-xs);
+  }
+
+  /* ── End CTA ── */
+  .about-cta-section {
+    background: var(--bg-surface-raised);
+    border-top: 1px solid var(--border-color);
+    padding: var(--space-4xl) 0;
+  }
+
+  .about-cta-card {
+    text-align: center;
+    padding: var(--space-4xl) var(--space-2xl);
+    background: var(--bg-hero-gradient);
+    border-radius: var(--border-radius-2xl);
+    color: #ffffff;
+  }
+
+  .about-cta-card h2 {
+    font-size: var(--text-3xl);
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: var(--space-sm);
+  }
+
+  .about-cta-card p {
+    font-size: var(--text-lg);
+    color: rgba(255,255,255,0.7);
+    margin-bottom: var(--space-2xl);
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    .about-stats {
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+    }
+
+    .about-callout {
+      font-size: var(--text-base);
+      padding: var(--space-lg);
+    }
+
+    .about-cta-card {
+      padding: var(--space-2xl) var(--space-lg);
+    }
+  }
+</style>

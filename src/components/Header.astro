@@ -1,0 +1,187 @@
+---
+interface Props {
+  currentPage?: string;
+}
+
+const { currentPage = '' } = Astro.props;
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo" aria-label="Jinpa Home">
+      <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="32" height="32" rx="8" fill="url(#logo-gradient)" />
+        <path d="M10 22V16C10 13.8 11.8 12 14 12H18C20.2 12 22 13.8 22 16V22" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="16" cy="9" r="2" fill="white"/>
+        <defs>
+          <linearGradient id="logo-gradient" x1="0" y1="0" x2="32" y2="32">
+            <stop stop-color="#2563eb"/>
+            <stop offset="1" stop-color="#1d4ed8"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      <span class="logo-text">Jinpa</span>
+    </a>
+
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="/" class:list={['nav-link', { active: currentPage === 'home' }]}>Home</a>
+      <a href="/templates" class:list={['nav-link', { active: currentPage === 'templates' }]}>Templates</a>
+      <a href="/about" class:list={['nav-link', { active: currentPage === 'about' }]}>About</a>
+      <a href="https://github.com/getjinpa" class="nav-link" target="_blank" rel="noopener noreferrer">
+        GitHub
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true" style="margin-left: 2px; opacity: 0.5;">
+          <path d="M3.5 1.5H10.5V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M10.5 1.5L1.5 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </nav>
+
+    <div class="header-actions">
+      <a href="/templates" class="btn btn-primary btn-sm">Get Started</a>
+    </div>
+
+    <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line class="menu-line menu-line-1" x1="3" y1="6" x2="21" y2="6" />
+        <line class="menu-line menu-line-2" x1="3" y1="12" x2="21" y2="12" />
+        <line class="menu-line menu-line-3" x1="3" y1="18" x2="21" y2="18" />
+      </svg>
+    </button>
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu" hidden>
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+      <a href="/" class="mobile-nav-link">Home</a>
+      <a href="/templates" class="mobile-nav-link">Templates</a>
+      <a href="/about" class="mobile-nav-link">About</a>
+      <a href="https://github.com/getjinpa" class="mobile-nav-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <div style="padding-top: 0.5rem;">
+        <a href="/templates" class="btn btn-primary" style="width: 100%;">Get Started</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg-surface-overlay);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color-light);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--header-height);
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: var(--text-primary);
+  }
+
+  .logo:hover {
+    color: var(--text-primary);
+  }
+
+  .logo-text {
+    font-size: var(--text-xl);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+
+  .main-nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xl);
+  }
+
+  .nav-link {
+    display: inline-flex;
+    align-items: center;
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    color: var(--text-primary);
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    cursor: pointer;
+    padding: 0.25rem;
+  }
+
+  .mobile-menu {
+    padding: var(--space-md) var(--space-lg) var(--space-lg);
+    border-top: 1px solid var(--border-color-light);
+  }
+
+  .mobile-nav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .mobile-nav-link {
+    display: block;
+    padding: 0.75rem var(--space-md);
+    font-size: var(--text-base);
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-radius: var(--border-radius-md);
+    transition: all var(--transition-fast);
+  }
+
+  .mobile-nav-link:hover {
+    background: var(--bg-surface-raised);
+    color: var(--text-primary);
+  }
+
+  @media (max-width: 768px) {
+    .main-nav,
+    .header-actions {
+      display: none;
+    }
+
+    .mobile-menu-toggle {
+      display: block;
+    }
+  }
+</style>
+
+<script>
+  const toggle = document.querySelector('.mobile-menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+
+  if (toggle && menu) {
+    toggle.addEventListener('click', () => {
+      const isOpen = !menu.hidden;
+      menu.hidden = isOpen;
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+    });
+  }
+</script>

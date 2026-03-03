@@ -1,0 +1,236 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TemplateCard from '../components/TemplateCard.astro';
+
+interface TemplateInfo {
+  name: string;
+  slug: string;
+  repo: string;
+  description: string;
+  thumbnail: string;
+  preview: string;
+  category: string;
+  features: string[];
+}
+
+// Template data (mirrors public/templates.json for client-side wizard)
+const templates: TemplateInfo[] = [
+  {
+    name: 'Starter Blog',
+    slug: 'starter-blog',
+    repo: 'jinpa-platform/template-starter-blog',
+    description: 'A clean, minimal blog with dark mode and search. Perfect for writers, thinkers, and creators who want a beautiful space to share their ideas.',
+    thumbnail: '/thumbnails/starter-blog.jpg',
+    preview: 'https://jinpa-platform.github.io/template-starter-blog/',
+    category: 'blog',
+    features: ['darkMode', 'search', 'rss', 'markdown'],
+  },
+  {
+    name: 'Portfolio',
+    slug: 'portfolio',
+    repo: 'jinpa-platform/template-portfolio',
+    description: 'Showcase your work with a stunning portfolio. Grid layouts, project pages, and smooth animations to highlight your creative projects.',
+    thumbnail: '/thumbnails/portfolio.jpg',
+    preview: 'https://jinpa-platform.github.io/template-portfolio/',
+    category: 'portfolio',
+    features: ['gallery', 'animations', 'responsive', 'darkMode'],
+  },
+  {
+    name: 'Business',
+    slug: 'business',
+    repo: 'jinpa-platform/template-business',
+    description: 'Professional business site with service pages, team section, testimonials, and contact forms. Everything you need to establish your online presence.',
+    thumbnail: '/thumbnails/business.jpg',
+    preview: 'https://jinpa-platform.github.io/template-business/',
+    category: 'business',
+    features: ['contactForm', 'testimonials', 'responsive', 'seo'],
+  },
+  {
+    name: 'Documentation',
+    slug: 'docs',
+    repo: 'jinpa-platform/template-docs',
+    description: 'Clean documentation site with sidebar navigation, search, and code highlighting. Ideal for projects, APIs, and knowledge bases.',
+    thumbnail: '/thumbnails/docs.jpg',
+    preview: 'https://jinpa-platform.github.io/template-docs/',
+    category: 'docs',
+    features: ['search', 'sidebar', 'codeHighlight', 'darkMode'],
+  },
+];
+
+const categories = [
+  { slug: 'all', label: 'All Templates' },
+  { slug: 'blog', label: 'Blog' },
+  { slug: 'portfolio', label: 'Portfolio' },
+  { slug: 'business', label: 'Business' },
+  { slug: 'docs', label: 'Documentation' },
+];
+---
+
+<BaseLayout
+  title="Templates"
+  description="Browse beautiful, free website templates. Choose a template and launch your site in seconds."
+  currentPage="templates"
+>
+  <section class="templates-hero">
+    <div class="container">
+      <h1 class="templates-title">Choose Your Template</h1>
+      <p class="templates-subtitle">
+        Every template is free, responsive, and fully customizable.
+        Pick one you love and have your site live in seconds.
+      </p>
+    </div>
+  </section>
+
+  <section class="templates-gallery section">
+    <div class="container">
+      <!-- Category Filter -->
+      <div class="category-filter" id="category-filter">
+        {categories.map(cat => (
+          <button
+            class:list={['filter-btn', { active: cat.slug === 'all' }]}
+            data-category={cat.slug}
+          >
+            {cat.label}
+          </button>
+        ))}
+      </div>
+
+      <!-- Template Grid -->
+      <div class="templates-grid" id="templates-grid">
+        {templates.map(template => (
+          <TemplateCard
+            name={template.name}
+            slug={template.slug}
+            description={template.description}
+            thumbnail={template.thumbnail}
+            preview={template.preview}
+            category={template.category}
+            features={template.features}
+          />
+        ))}
+      </div>
+
+      <!-- Empty State -->
+      <div class="templates-empty" id="templates-empty" hidden>
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--text-tertiary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="8"/>
+          <path d="m21 21-4.3-4.3"/>
+        </svg>
+        <p>No templates found in this category yet. Check back soon!</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .templates-hero {
+    padding: var(--space-4xl) 0 var(--space-xl);
+    text-align: center;
+    background: var(--bg-surface-raised);
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .templates-title {
+    font-size: var(--text-5xl);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: var(--space-md);
+  }
+
+  .templates-subtitle {
+    font-size: var(--text-lg);
+    color: var(--text-secondary);
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: var(--leading-relaxed);
+  }
+
+  .category-filter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-2xl);
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    padding: 0.5rem 1rem;
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--text-secondary);
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: var(--border-radius-full);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+
+  .filter-btn:hover {
+    background: var(--bg-surface-raised);
+    color: var(--text-primary);
+  }
+
+  .filter-btn.active {
+    background: var(--color-primary);
+    color: #ffffff;
+    border-color: var(--color-primary);
+  }
+
+  .templates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--space-xl);
+  }
+
+  .templates-empty {
+    text-align: center;
+    padding: var(--space-4xl) 0;
+    color: var(--text-tertiary);
+  }
+
+  .templates-empty p {
+    margin-top: var(--space-md);
+    font-size: var(--text-base);
+  }
+
+  @media (max-width: 768px) {
+    .templates-title {
+      font-size: var(--text-3xl);
+    }
+
+    .templates-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  // Category filtering
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const grid = document.getElementById('templates-grid');
+  const emptyState = document.getElementById('templates-empty');
+  const cards = document.querySelectorAll('.template-card');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Update active button
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const category = btn.getAttribute('data-category');
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const cardCategory = card.getAttribute('data-category');
+        const show = category === 'all' || cardCategory === category;
+        (card as HTMLElement).style.display = show ? '' : 'none';
+        if (show) visibleCount++;
+      });
+
+      if (emptyState) {
+        emptyState.hidden = visibleCount > 0;
+      }
+    });
+  });
+</script>

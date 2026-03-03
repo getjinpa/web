@@ -1,0 +1,182 @@
+---
+interface Props {
+  name: string;
+  slug: string;
+  description: string;
+  thumbnail: string;
+  preview: string;
+  category: string;
+  features: string[];
+}
+
+const { name, slug, description, thumbnail, preview, category, features } = Astro.props;
+
+const featureLabels: Record<string, string> = {
+  darkMode: 'Dark Mode',
+  search: 'Search',
+  rss: 'RSS',
+  markdown: 'Markdown',
+  gallery: 'Gallery',
+  animations: 'Animations',
+  responsive: 'Responsive',
+  contactForm: 'Contact Form',
+  testimonials: 'Testimonials',
+  seo: 'SEO',
+  sidebar: 'Sidebar',
+  codeHighlight: 'Code Highlight',
+};
+
+const categoryLabels: Record<string, string> = {
+  blog: 'Blog',
+  portfolio: 'Portfolio',
+  business: 'Business',
+  docs: 'Documentation',
+};
+---
+
+<article class="template-card card" data-category={category}>
+  <div class="template-thumbnail">
+    <div class="template-thumbnail-placeholder">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="2" y="3" width="20" height="14" rx="2"/>
+        <line x1="8" y1="21" x2="16" y2="21"/>
+        <line x1="12" y1="17" x2="12" y2="21"/>
+      </svg>
+      <span>{name}</span>
+    </div>
+    <div class="template-thumbnail-overlay">
+      <a href={preview} class="btn btn-sm btn-secondary" target="_blank" rel="noopener noreferrer">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
+          <circle cx="12" cy="12" r="3"/>
+        </svg>
+        Live Preview
+      </a>
+    </div>
+  </div>
+
+  <div class="template-info">
+    <div class="template-meta">
+      <span class="badge">{categoryLabels[category] || category}</span>
+    </div>
+    <h3 class="template-name">{name}</h3>
+    <p class="template-description">{description}</p>
+
+    <div class="template-features">
+      {features.slice(0, 4).map(f => (
+        <span class="template-feature-tag">{featureLabels[f] || f}</span>
+      ))}
+    </div>
+
+    <div class="template-actions">
+      <a href={`/setup?template=${slug}`} class="btn btn-primary btn-sm template-use-btn">
+        Use This Template
+      </a>
+      <a href={preview} class="btn btn-ghost btn-sm" target="_blank" rel="noopener noreferrer">
+        Preview
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3.5 1.5H10.5V8.5"/>
+          <path d="M10.5 1.5L1.5 10.5"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</article>
+
+<style>
+  .template-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .template-thumbnail {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: var(--bg-surface-raised);
+  }
+
+  .template-thumbnail-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    width: 100%;
+    height: 100%;
+    color: var(--text-tertiary);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    background: linear-gradient(135deg, var(--bg-surface-raised) 0%, var(--bg-surface) 100%);
+  }
+
+  .template-thumbnail-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+  }
+
+  .template-card:hover .template-thumbnail-overlay {
+    opacity: 1;
+  }
+
+  .template-info {
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .template-meta {
+    margin-bottom: var(--space-sm);
+  }
+
+  .template-name {
+    font-size: var(--text-lg);
+    font-weight: 700;
+    margin-bottom: var(--space-xs);
+  }
+
+  .template-description {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-md);
+    flex: 1;
+  }
+
+  .template-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+    margin-bottom: var(--space-lg);
+  }
+
+  .template-feature-tag {
+    display: inline-block;
+    padding: 0.125rem 0.5rem;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    color: var(--text-tertiary);
+    background: var(--bg-surface-raised);
+    border-radius: var(--border-radius-full);
+    border: 1px solid var(--border-color-light);
+  }
+
+  .template-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--border-color-light);
+  }
+
+  .template-use-btn {
+    flex: 1;
+  }
+</style>

@@ -1,0 +1,28 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2026-03-03",
+  "announcements": [
+    {
+      "id": "welcome-001",
+      "type": "welcome",
+      "title": "Welcome to Jinpa!",
+      "body": "Your site is live. Use this admin panel to write posts, upload images, and manage your content — no coding needed.",
+      "date": "2026-03-03",
+      "dismissible": true
+    }
+  ],
+  "tips": [
+    {
+      "id": "tip-001",
+      "text": "You can write post titles in both English and Tibetan. Just paste Tibetan Unicode text directly into the title field."
+    },
+    {
+      "id": "tip-002",
+      "text": "Your site deploys automatically every time you publish. It usually goes live within 2 minutes."
+    },
+    {
+      "id": "tip-003",
+      "text": "Add a custom domain for free in your GitHub repository under Settings → Pages."
+    }
+  ]
+}

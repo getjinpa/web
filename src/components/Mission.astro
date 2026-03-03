@@ -1,0 +1,156 @@
+---
+---
+
+<section class="mission-section section" id="mission">
+  <div class="container">
+
+    <div class="section-header">
+      <h2>Every Tibetan website is an act of preservation</h2>
+      <p>Tibetan culture is ancient, complex, and alive. But on the internet — where AI systems are learning what the world knows — Tibet barely exists.</p>
+    </div>
+
+    <div class="mission-stats">
+      <div class="mission-stat">
+        <div class="mission-stat-number">~6,000</div>
+        <div class="mission-stat-label">Tibetan Wikipedia articles</div>
+        <div class="mission-stat-compare">Welsh has over 150,000</div>
+      </div>
+      <div class="mission-stat-divider" aria-hidden="true"></div>
+      <div class="mission-stat">
+        <div class="mission-stat-number">&lt;0.01%</div>
+        <div class="mission-stat-label">Of AI training data is Tibetan</div>
+        <div class="mission-stat-compare">Despite 7 million+ speakers worldwide</div>
+      </div>
+      <div class="mission-stat-divider" aria-hidden="true"></div>
+      <div class="mission-stat">
+        <div class="mission-stat-number">0</div>
+        <div class="mission-stat-label">Major voice assistants</div>
+        <div class="mission-stat-compare">That support the Tibetan language</div>
+      </div>
+    </div>
+
+    <div class="mission-body">
+      <p>
+        AI systems are being trained right now on what exists on the web. The tools the next
+        generation will use to learn about the world — to translate, to research, to understand
+        history — are being shaped by what's online today. A culture with almost no web presence
+        risks becoming a culture that future AI barely knows existed.
+      </p>
+      <p>
+        It's not just AI. It's the Tibetan child in Toronto searching for their heritage.
+        The researcher trying to document a lineage. The student looking for a living teacher.
+        The donor who wants to fund a monastery but can't find it online. Digital invisibility
+        has real consequences — and the Tibetan community faces it more acutely than almost any
+        other culture on earth.
+      </p>
+      <blockquote class="mission-callout">
+        Every Tibetan website is not just a website. It is a contribution to the permanent
+        record of human culture. It is training data. It is the source material that future
+        AI — and future generations — will learn from. The window to shape what the world
+        knows about Tibet is measured in years, not decades.
+      </blockquote>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .mission-section {
+    background: var(--bg-page);
+    border-top: 1px solid var(--border-color);
+  }
+
+  /* ── Stats bar ── */
+  .mission-stats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3xl);
+    margin-bottom: var(--space-4xl);
+    padding: var(--space-2xl) var(--space-3xl);
+    background: var(--bg-surface-raised);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-2xl);
+  }
+
+  .mission-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xs);
+    text-align: center;
+    flex: 1;
+  }
+
+  .mission-stat-number {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    color: var(--color-primary);
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+
+  .mission-stat-label {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .mission-stat-compare {
+    font-size: var(--text-xs);
+    color: var(--text-tertiary);
+  }
+
+  .mission-stat-divider {
+    width: 1px;
+    height: 4rem;
+    background: var(--border-color);
+    flex-shrink: 0;
+  }
+
+  /* ── Body text ── */
+  .mission-body {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .mission-body p {
+    font-size: var(--text-base);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-lg);
+  }
+
+  /* ── Callout quote ── */
+  .mission-callout {
+    margin: var(--space-2xl) 0 0;
+    padding: var(--space-xl) var(--space-2xl);
+    border-left: 3px solid var(--color-primary);
+    background: var(--bg-surface-raised);
+    border-radius: 0 var(--border-radius-lg) var(--border-radius-lg) 0;
+    font-size: var(--text-lg);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--text-primary);
+    line-height: var(--leading-relaxed);
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    .mission-stats {
+      flex-direction: column;
+      gap: var(--space-xl);
+      padding: var(--space-xl);
+    }
+
+    .mission-stat-divider {
+      width: 3rem;
+      height: 1px;
+    }
+
+    .mission-callout {
+      font-size: var(--text-base);
+      padding: var(--space-lg);
+    }
+  }
+</style>

@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Features from '../components/Features.astro';
+import WhoItsFor from '../components/WhoItsFor.astro';
+import Mission from '../components/Mission.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+---
+
+<BaseLayout title="Jinpa" currentPage="home">
+  <Hero />
+  <Features />
+  <WhoItsFor />
+  <Mission />
+  <HowItWorks />
+
+  <!-- CTA Banner -->
+  <section class="cta-banner section">
+    <div class="container">
+      <div class="cta-card">
+        <h2 class="cta-title">Give Tibetan culture a home on the web</h2>
+        <p class="cta-description">
+          Every Tibetan website is training data. Every page is cultural preservation.
+          Yours takes 90 seconds and costs nothing — ever.
+        </p>
+        <div class="cta-actions">
+          <a href="/templates" class="btn btn-primary btn-lg">
+            Create Your Website Free
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12h14"/>
+              <path d="m12 5 7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .cta-banner {
+    background: var(--bg-page);
+  }
+
+  .cta-card {
+    text-align: center;
+    padding: var(--space-4xl) var(--space-2xl);
+    background: var(--bg-hero-gradient);
+    border-radius: var(--border-radius-2xl);
+    color: #ffffff;
+  }
+
+  .cta-title {
+    font-size: var(--text-4xl);
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: var(--space-md);
+  }
+
+  .cta-description {
+    font-size: var(--text-lg);
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 500px;
+    margin: 0 auto var(--space-2xl);
+    line-height: var(--leading-relaxed);
+  }
+
+  .cta-actions {
+    display: flex;
+    justify-content: center;
+  }
+
+  .cta-card .btn-primary {
+    box-shadow: 0 0 30px rgba(37, 99, 235, 0.4);
+  }
+
+  @media (max-width: 768px) {
+    .cta-card {
+      padding: var(--space-2xl) var(--space-lg);
+    }
+
+    .cta-title {
+      font-size: var(--text-3xl);
+    }
+  }
+</style>

@@ -1,0 +1,14 @@
+{
+  "templates": [
+    {
+      "name": "Starter Blog",
+      "slug": "starter-blog",
+      "repo": "getjinpa/jinpa-starter",
+      "description": "A clean, minimal blog with dark mode and search. Perfect for writers, thinkers, and creators who want a beautiful space to share their ideas.",
+      "thumbnail": "/thumbnails/starter-blog.jpg",
+      "preview": "https://getjinpa.github.io/jinpa-starter/",
+      "category": "blog",
+      "features": ["darkMode", "search", "rss", "markdown"]
+    }
+  ]
+}

@@ -1,0 +1,266 @@
+---
+---
+
+<section class="hero">
+  <div class="hero-bg">
+    <div class="hero-gradient"></div>
+    <div class="hero-grid-pattern"></div>
+  </div>
+
+  <div class="container hero-content">
+    <div class="hero-badges animate-fade-in-up" style="animation-delay: 0s;">
+      <div class="hero-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+        </svg>
+        World's first zero-server CMS
+      </div>
+      <div class="hero-badge hero-badge-secondary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+        Built for Tibetan communities
+      </div>
+    </div>
+
+    <h1 class="hero-title animate-fade-in-up" style="animation-delay: 0.1s;">
+      Create a beautiful, free<br />
+      website in <span class="hero-highlight">90 seconds</span>
+    </h1>
+
+    <p class="hero-subtitle animate-fade-in-up" style="animation-delay: 0.2s;">
+      Jinpa gives the Tibetan community — monasteries, artists, teachers, writers,
+      and everyone keeping the culture alive — a stunning free website.
+      Zero coding. Zero cost. Live in 90 seconds.
+    </p>
+
+    <div class="hero-actions animate-fade-in-up" style="animation-delay: 0.3s;">
+      <a href="/templates" class="btn btn-primary btn-lg hero-cta">
+        Browse Templates
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 12h14"/>
+          <path d="m12 5 7 7-7 7"/>
+        </svg>
+      </a>
+      <a href="https://getjinpa.github.io/jinpa-starter/" class="btn btn-secondary btn-lg" target="_blank" rel="noopener noreferrer">
+        See a Live Demo
+      </a>
+    </div>
+
+    <div class="hero-social-proof animate-fade-in-up" style="animation-delay: 0.4s;">
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-value">100%</span>
+          <span class="hero-stat-label">Free forever</span>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <span class="hero-stat-value">0</span>
+          <span class="hero-stat-label">Lines of code needed</span>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <span class="hero-stat-value">90s</span>
+          <span class="hero-stat-label">From start to live site</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    padding: var(--space-5xl) 0;
+    overflow: hidden;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .hero-gradient {
+    position: absolute;
+    inset: 0;
+    background: var(--bg-hero-gradient);
+  }
+
+  .hero-grid-pattern {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .hero-badges {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-xl);
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.375rem 0.875rem;
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: var(--border-radius-full);
+  }
+
+  .hero-badge-secondary {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .hero-title {
+    font-size: clamp(2.5rem, 6vw, var(--text-6xl));
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: var(--space-xl);
+  }
+
+  .hero-highlight {
+    background: linear-gradient(135deg, #60a5fa, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-subtitle {
+    font-size: var(--text-xl);
+    color: rgba(255, 255, 255, 0.7);
+    line-height: var(--leading-relaxed);
+    max-width: 600px;
+    margin: 0 auto var(--space-2xl);
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-4xl);
+  }
+
+  .hero-cta {
+    box-shadow: 0 0 30px rgba(37, 99, 235, 0.4);
+  }
+
+  .hero-cta:hover {
+    box-shadow: 0 0 40px rgba(37, 99, 235, 0.5);
+  }
+
+  .hero-actions .btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+  }
+
+  .hero-actions .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+  }
+
+  .hero-social-proof {
+    display: flex;
+    justify-content: center;
+  }
+
+  .hero-stats {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xl);
+    padding: var(--space-lg) var(--space-2xl);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius-2xl);
+    backdrop-filter: blur(8px);
+  }
+
+  .hero-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .hero-stat-value {
+    font-size: var(--text-2xl);
+    font-weight: 800;
+    color: #ffffff;
+  }
+
+  .hero-stat-label {
+    font-size: var(--text-xs);
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .hero-stat-divider {
+    width: 1px;
+    height: 2.5rem;
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      min-height: auto;
+      padding: var(--space-4xl) 0;
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 8vw, 3rem);
+    }
+
+    .hero-subtitle {
+      font-size: var(--text-lg);
+    }
+
+    .hero-actions {
+      flex-direction: column;
+    }
+
+    .hero-actions .btn {
+      width: 100%;
+    }
+
+    .hero-stats {
+      flex-direction: column;
+      gap: var(--space-md);
+      padding: var(--space-lg);
+    }
+
+    .hero-stat-divider {
+      width: 3rem;
+      height: 1px;
+    }
+  }
+</style>
