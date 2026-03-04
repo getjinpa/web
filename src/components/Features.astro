@@ -11,19 +11,9 @@ const features = [
     description: 'Pick a template, fill in your details, and publish. Edit content through a simple admin panel — no terminal needed.',
   },
   {
-    icon: 'lock',
-    title: 'Free HTTPS',
-    description: 'Every Jinpa site gets automatic HTTPS — encrypted connections, for free, maintained by GitHub. No certificate fees, no renewals.',
-  },
-  {
     icon: 'zap',
     title: 'Built to Be Found',
     description: 'Every Jinpa site ships with sitemaps, structured data, and llms.txt for AI crawlers. Your content gets indexed — by Google, Bing, and AI — the moment it goes live.',
-  },
-  {
-    icon: 'shield',
-    title: 'Your Data, Your Control',
-    description: 'Your site lives in your GitHub account. No vendor lock-in. Export, migrate, or customize anytime.',
   },
 ];
 ---
@@ -31,8 +21,8 @@ const features = [
 <section class="features section" id="features">
   <div class="container">
     <div class="section-header">
-      <h2>Why Jinpa?</h2>
-      <p>We didn't set out to build software. We set out to answer a question: why does one of the world's great civilizations barely exist on the internet? The answer became the world's first CMS that runs entirely on GitHub Pages — no servers, no databases, no cost.</p>
+      <h2>Everything you need. Nothing you don't.</h2>
+      <p>The world's first CMS that runs entirely on free infrastructure — no servers, no databases, no monthly bill. Ever.</p>
     </div>
 
     <div class="features-grid">
@@ -54,23 +44,12 @@ const features = [
                 <line x1="2" y1="2" x2="22" y2="22"/>
               </svg>
             )}
-            {feature.icon === 'lock' && (
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-              </svg>
-            )}
             {feature.icon === 'zap' && (
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
               </svg>
             )}
-            {feature.icon === 'shield' && (
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                <path d="m9 12 2 2 4-4"/>
-              </svg>
-            )}
+
           </div>
           <h3 class="feature-title">{feature.title}</h3>
           <p class="feature-description">{feature.description}</p>
@@ -87,45 +66,52 @@ const features = [
 
   .features-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: var(--space-xl);
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
   }
 
   .feature-card {
-    text-align: center;
-    padding: var(--space-2xl) var(--space-lg);
+    text-align: left;
+    padding: var(--space-xl) var(--space-xl);
     border-radius: var(--border-radius-xl);
-    border: 1px solid transparent;
-    transition: all var(--transition-slow);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--transition-slow), border-color var(--transition-slow), transform var(--transition-slow);
   }
 
   .feature-card:hover {
-    background: var(--bg-surface-raised);
-    border-color: var(--border-color);
+    border-color: var(--color-primary-200);
     box-shadow: var(--shadow-lg);
-    transform: translateY(-4px);
+    transform: translateY(-3px);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .feature-card:hover {
+      border-color: rgba(37, 99, 235, 0.35);
+    }
   }
 
   .feature-icon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 3.5rem;
-    height: 3.5rem;
-    border-radius: var(--border-radius-xl);
-    background: var(--color-primary-50);
+    width: 3rem;
+    height: 3rem;
+    border-radius: var(--border-radius-lg);
+    background: rgba(37, 99, 235, 0.08);
     color: var(--color-primary);
     margin-bottom: var(--space-lg);
   }
 
   @media (prefers-color-scheme: dark) {
     .feature-icon {
-      background: rgba(37, 99, 235, 0.15);
+      background: rgba(37, 99, 235, 0.18);
     }
   }
 
   .feature-title {
-    font-size: var(--text-lg);
+    font-size: var(--text-base);
     font-weight: 700;
     margin-bottom: var(--space-sm);
   }
@@ -136,13 +122,13 @@ const features = [
     line-height: var(--leading-relaxed);
   }
 
-  @media (max-width: 640px) {
+  @media (max-width: 900px) {
     .features-grid {
       grid-template-columns: repeat(2, 1fr);
     }
   }
 
-  @media (max-width: 400px) {
+  @media (max-width: 520px) {
     .features-grid {
       grid-template-columns: 1fr;
     }

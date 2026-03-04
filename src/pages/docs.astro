@@ -1,0 +1,1727 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Documentation"
+  description="Jinpa documentation — how it works, the architecture, our mission, and how to support us."
+  currentPage="docs"
+>
+  <div class="docs-page">
+    <!-- Hero -->
+    <div class="docs-hero">
+      <div class="container">
+        <span class="badge">Documentation</span>
+        <h1>Everything about Jinpa</h1>
+        <p class="docs-hero-sub">
+          How it works, why we built it, who built it, and how you can support us.
+          Part technical reference, part mission statement, part grant proposal.
+        </p>
+      </div>
+    </div>
+
+    <!-- Layout: TOC + Content -->
+    <div class="container docs-layout">
+      <!-- Sticky Table of Contents -->
+      <aside class="docs-toc">
+        <div class="toc-inner">
+          <h3 class="toc-title">On this page</h3>
+          <nav aria-label="Table of contents">
+            <ul class="toc-list">
+              <li><a href="#quick-start" class="toc-link">Getting Started</a></li>
+              <li><a href="#custom-domain" class="toc-link">Custom Domain</a></li>
+              <li><a href="#architecture" class="toc-link">Architecture</a>
+                <ul class="toc-sub">
+                  <li><a href="#tech-stack" class="toc-link-sub">Tech Stack</a></li>
+                  <li><a href="#what-happens" class="toc-link-sub">What Happens Under the Hood</a></li>
+                  <li><a href="#admin-panel" class="toc-link-sub">The Admin Panel</a></li>
+                  <li><a href="#auth" class="toc-link-sub">Security & Auth</a></li>
+                </ul>
+              </li>
+              <li><a href="#mission" class="toc-link">Why We Built Jinpa</a></li>
+              <li><a href="#support" class="toc-link">Support & Funding</a></li>
+              <li><a href="#v2" class="toc-link">V2 Vision</a>
+                <ul class="toc-sub">
+                  <li><a href="#v2-no-github" class="toc-link-sub">No GitHub Account Needed</a></li>
+                  <li><a href="#v2-password" class="toc-link-sub">Password Control</a></li>
+                  <li><a href="#v2-domain" class="toc-link-sub">One-Click Custom Domain</a></li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="docs-content">
+
+        <!-- ===== 1. QUICK START ===== -->
+        <section id="quick-start" class="doc-section">
+          <div class="section-label">Step-by-step guide</div>
+          <h2>Getting Started with Jinpa</h2>
+          <p class="section-intro">
+            Jinpa is designed so that anyone — regardless of technical background — can create a fully
+            functional website in under two minutes. Here is exactly what happens at each step.
+          </p>
+
+          <div class="steps-guide">
+            <div class="guide-step">
+              <div class="guide-step-num">1</div>
+              <div class="guide-step-body">
+                <h3>Create a free GitHub account</h3>
+                <p>
+                  Jinpa uses <strong>your own</strong> <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a>
+                  account to store your website's files and publish it to the web — completely free.
+                  Your repository, your code, your content: everything belongs to you. Jinpa never
+                  takes ownership of anything you create. If you don't already have a GitHub account,
+                  go to <strong>github.com</strong> and sign up. It takes about a minute and you only
+                  ever need a basic, free account.
+                </p>
+                <div class="tip-box">
+                  <strong>You own everything.</strong> Your website lives in a Git repository under
+                  your own GitHub account. All your posts, pages, and images are standard files that
+                  you can download, move, or use with any other tool at any time. Jinpa is just the
+                  tool that helps you manage it — the content is always yours. And because it is hosted
+                  on GitHub Pages (backed by Microsoft), your site stays online for free, forever,
+                  even if Jinpa ever ceased to exist.
+                </div>
+              </div>
+            </div>
+
+            <div class="guide-step">
+              <div class="guide-step-num">2</div>
+              <div class="guide-step-body">
+                <h3>Go to Jinpa and click "Get Started"</h3>
+                <p>
+                  Visit <strong>getjinpa.com</strong> and click <strong>Get Started</strong>
+                  or <strong>Use This Template</strong>. You will be taken to the Jinpa setup wizard.
+                </p>
+              </div>
+            </div>
+
+            <div class="guide-step">
+              <div class="guide-step-num">3</div>
+              <div class="guide-step-body">
+                <h3>Log in with GitHub</h3>
+                <p>
+                  The wizard's first step shows a single button: <strong>"Login with GitHub"</strong>. Clicking it
+                  redirects you to GitHub's official login page. You enter your GitHub username and password there —
+                  Jinpa never sees your password. After you approve, GitHub sends you back to Jinpa automatically.
+                </p>
+              </div>
+            </div>
+
+            <div class="guide-step">
+              <div class="guide-step-num">4</div>
+              <div class="guide-step-body">
+                <h3>Name your site</h3>
+                <p>
+                  Give your website a name (e.g. <em>"Sera Monastery"</em>) and a short description. Jinpa also
+                  suggests a URL-friendly repository name automatically. You can leave everything as-is or customize it.
+                </p>
+              </div>
+            </div>
+
+            <div class="guide-step">
+              <div class="guide-step-num">5</div>
+              <div class="guide-step-body">
+                <h3>Jinpa creates everything automatically</h3>
+                <p>
+                  This is where the magic happens. Behind the scenes (explained in detail in the
+                  <a href="#what-happens">Architecture section</a>), Jinpa:
+                </p>
+                <ul class="guide-list">
+                  <li>Copies the Jinpa website template into your GitHub account</li>
+                  <li>Updates it with your site name and description</li>
+                  <li>Enables GitHub Pages so your site is live on the internet</li>
+                  <li>Waits for the first build to complete (about 60–90 seconds)</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="guide-step">
+              <div class="guide-step-num">6</div>
+              <div class="guide-step-body">
+                <h3>Set your admin password and start editing</h3>
+                <p>
+                  Once your site is live, Jinpa prompts you to set a password for the admin panel. This password
+                  protects your site's control panel — choose something memorable. After that, you land directly
+                  in the admin panel, where you can write posts, add pages, upload images, and customize your site's
+                  look — all from a visual editor, no coding required.
+                </p>
+                <div class="tip-box success">
+                  <strong>Your site is now live.</strong> It has a real URL like
+                  <code>yourusername.github.io/your-site-name</code>. Share it with anyone in the world.
+                </div>
+              </div>
+            </div>
+
+            <div class="guide-step">
+              <div class="guide-step-num">7</div>
+              <div class="guide-step-body">
+                <h3>Returning to your site later</h3>
+                <p>
+                  To edit your site after the initial setup, go to your site's URL and add <code>/admin/</code>
+                  at the end (e.g., <code>yourusername.github.io/your-site-name/admin/</code>). Enter your password
+                  and you're back in the editor.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- ===== 2. CUSTOM DOMAIN ===== -->
+        <section id="custom-domain" class="doc-section">
+          <div class="section-label">Optional setup</div>
+          <h2>Connecting a Custom Domain</h2>
+          <p class="section-intro">
+            By default your site lives at <code>yourusername.github.io/repo-name</code>. If you want a proper
+            domain like <code>seramonastery.org</code>, you can connect one you own. You need to buy the domain
+            first (from a registrar like Namecheap, Google Domains, or GoDaddy — usually $10–15/year).
+          </p>
+
+          <h3>Step 1: Add the domain to GitHub Pages</h3>
+          <ol class="numbered-list">
+            <li>Go to your repository on GitHub (e.g., <code>github.com/yourusername/your-site</code>)</li>
+            <li>Click <strong>Settings</strong> (top tab)</li>
+            <li>In the left sidebar, click <strong>Pages</strong></li>
+            <li>Under <strong>Custom domain</strong>, type your domain (e.g., <code>seramonastery.org</code>)</li>
+            <li>Click <strong>Save</strong></li>
+            <li>Check the box for <strong>Enforce HTTPS</strong> (this gives your site a padlock — secure)</li>
+          </ol>
+
+          <h3>Step 2: Update your domain's DNS settings</h3>
+          <p>
+            Log in to wherever you bought your domain. Find the <strong>DNS settings</strong> or
+            <strong>DNS management</strong> section. Add the following records:
+          </p>
+
+          <div class="dns-table-wrap">
+            <table class="dns-table">
+              <thead>
+                <tr>
+                  <th>Type</th>
+                  <th>Name / Host</th>
+                  <th>Value / Points to</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>A</code></td>
+                  <td><code>@</code></td>
+                  <td><code>185.199.108.153</code></td>
+                </tr>
+                <tr>
+                  <td><code>A</code></td>
+                  <td><code>@</code></td>
+                  <td><code>185.199.109.153</code></td>
+                </tr>
+                <tr>
+                  <td><code>A</code></td>
+                  <td><code>@</code></td>
+                  <td><code>185.199.110.153</code></td>
+                </tr>
+                <tr>
+                  <td><code>A</code></td>
+                  <td><code>@</code></td>
+                  <td><code>185.199.111.153</code></td>
+                </tr>
+                <tr>
+                  <td><code>CNAME</code></td>
+                  <td><code>www</code></td>
+                  <td><code>yourusername.github.io</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            DNS changes take anywhere from a few minutes to 48 hours to fully propagate. Once done,
+            your custom domain will point to your Jinpa site — with HTTPS automatically enabled.
+          </p>
+
+          <div class="tip-box">
+            <strong>No ongoing cost for hosting.</strong> Even with a custom domain, GitHub still hosts your
+            site for free. You only pay for the domain name itself (typically $10–15 per year).
+          </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- ===== 3. ARCHITECTURE ===== -->
+        <section id="architecture" class="doc-section">
+          <div class="section-label">Technical reference</div>
+          <h2>Architecture & Design</h2>
+          <p class="section-intro">
+            Jinpa is built on a deliberate set of choices: use as little infrastructure as possible,
+            depend on as few third-party services as possible, and keep websites alive permanently
+            without recurring costs. Here is what powers it and why.
+          </p>
+
+          <section id="tech-stack">
+            <h3>The Technology Stack</h3>
+
+            <div class="tech-cards">
+              <div class="tech-card tech-card-jinpa">
+                <div class="tech-card-header">
+                  <span class="tech-tag tech-tag-jinpa">Original Software</span>
+                  <strong>Jinpa CMS Core</strong>
+                </div>
+                <p>
+                  The heart of Jinpa is its own original software — built from scratch, with no borrowed CMS
+                  engine underneath. The CMS Core is approximately 2,600 lines of standards-compliant vanilla
+                  JavaScript that runs entirely in the browser, with zero external dependencies. It includes a
+                  full single-page admin application, a Markdown editor with live preview, a complete GitHub
+                  API client, a hash-based SPA router, a content cache layer, and a four-step site setup
+                  wizard. The security layer — an encrypted credential vault using AES-256-GCM and PBKDF2 with
+                  a novel vault-handoff pattern — is also original work. Together these form a complete,
+                  self-contained content management system that has no equivalent in the open-source ecosystem.
+                </p>
+              </div>
+
+              <div class="tech-card">
+                <div class="tech-card-header">
+                  <span class="tech-tag">Framework</span>
+                  <strong>Astro</strong>
+                </div>
+                <p>
+                  <a href="https://astro.build" target="_blank" rel="noopener noreferrer">Astro</a> is a modern
+                  web framework that builds websites into pure HTML, CSS, and JavaScript files — no server needed.
+                  The output is just static files that can be hosted anywhere. We chose Astro because it produces
+                  extremely fast, lightweight sites (no JavaScript frameworks shipped to the browser by default),
+                  has excellent support for content-heavy sites like blogs and monastery pages, and has a thriving
+                  open-source community.
+                </p>
+              </div>
+
+              <div class="tech-card">
+                <div class="tech-card-header">
+                  <span class="tech-tag">Hosting</span>
+                  <strong>GitHub Pages</strong>
+                </div>
+                <p>
+                  <a href="https://pages.github.com" target="_blank" rel="noopener noreferrer">GitHub Pages</a>
+                  is GitHub's free static hosting service. Every public repository can have a live website at no cost.
+                  GitHub's infrastructure is backed by Microsoft and has been running for over a decade. We chose it
+                  because it is free forever for public sites, has no bandwidth limits that would affect a community
+                  organization, and — critically — the content lives in a Git repository that the user fully owns.
+                  Even if Jinpa ceased to exist, every user's website would continue running indefinitely.
+                </p>
+              </div>
+
+              <div class="tech-card">
+                <div class="tech-card-header">
+                  <span class="tech-tag">CI/CD</span>
+                  <strong>GitHub Actions</strong>
+                </div>
+                <p>
+                  GitHub Actions is GitHub's automation system. Every time a user publishes a post or changes their
+                  site, Jinpa commits the new content to GitHub, which automatically triggers a build pipeline.
+                  Astro compiles the site and GitHub Pages deploys it — typically in under 60 seconds. GitHub Actions
+                  is free for all public repositories, meaning every build is free regardless of volume.
+                </p>
+              </div>
+
+              <div class="tech-card">
+                <div class="tech-card-header">
+                  <span class="tech-tag">Admin Panel</span>
+                  <strong>Vanilla JavaScript + Web Crypto API</strong>
+                </div>
+                <p>
+                  The admin panel is built with zero JavaScript frameworks — no React, no Vue, no Svelte. It is
+                  ~2,600 lines of hand-written, standards-compliant JavaScript using only APIs that are built into
+                  every modern browser. The encryption uses the browser's native <code>Web Crypto API</code> with
+                  AES-256-GCM — the same standard used in banking applications. This means the admin panel has
+                  zero external dependencies and will continue to work even if the entire JavaScript ecosystem changes.
+                </p>
+              </div>
+
+              <div class="tech-card">
+                <div class="tech-card-header">
+                  <span class="tech-tag">Auth Proxy</span>
+                  <strong>Cloudflare Workers</strong>
+                </div>
+                <p>
+                  GitHub's OAuth system requires a server to securely exchange an authorization code for an access
+                  token (due to browser security restrictions). We run a single lightweight Cloudflare Worker as
+                  this exchange proxy. It does one job: receive the OAuth code from GitHub, exchange it for a token
+                  using Jinpa's client secret, and return that token to the user's browser via URL hash so it never
+                  appears in server logs. The worker runs at the edge (Cloudflare's global network) and handles
+                  this in milliseconds. This is free on Cloudflare's generous free tier.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section id="what-happens">
+            <h3>What Actually Happens When You Click "Use This Template"</h3>
+            <p>
+              When a user completes the Jinpa setup wizard, a precise sequence of API calls happens in the
+              background. Here is what occurs step by step:
+            </p>
+
+            <div class="flow-steps">
+              <div class="flow-step">
+                <div class="flow-step-icon">→</div>
+                <div class="flow-step-body">
+                  <strong>GitHub OAuth handshake</strong>
+                  <p>The browser redirects to GitHub's authorization endpoint. The user approves access.
+                  GitHub redirects back with a one-time authorization code.</p>
+                </div>
+              </div>
+              <div class="flow-step">
+                <div class="flow-step-icon">→</div>
+                <div class="flow-step-body">
+                  <strong>Token exchange via Cloudflare Worker</strong>
+                  <p>The code is sent to the Cloudflare Worker, which exchanges it with GitHub's API
+                  for a real OAuth access token (scoped to <code>repo</code> and <code>workflow</code> only).
+                  The token is returned to the browser via URL hash and stored encrypted in <code>localStorage</code>.</p>
+                </div>
+              </div>
+              <div class="flow-step">
+                <div class="flow-step-icon">→</div>
+                <div class="flow-step-body">
+                  <strong>Repository fork</strong>
+                  <p>The wizard calls the GitHub API to fork <code>getjinpa/jinpa-starter</code> into the user's
+                  account under their chosen repository name. This is a deep copy — the user now owns their
+                  own independent copy of the template.</p>
+                </div>
+              </div>
+              <div class="flow-step">
+                <div class="flow-step-icon">→</div>
+                <div class="flow-step-body">
+                  <strong>Config update</strong>
+                  <p>The wizard reads <code>site.config.json</code> from the new repo via GitHub API,
+                  updates the site title and description with what the user entered, then commits
+                  the change back — triggering the first build automatically.</p>
+                </div>
+              </div>
+              <div class="flow-step">
+                <div class="flow-step-icon">→</div>
+                <div class="flow-step-body">
+                  <strong>GitHub Pages enablement</strong>
+                  <p>The wizard calls the GitHub Pages API to enable Pages on the repository,
+                  configured to deploy from the <code>gh-pages</code> branch that GitHub Actions
+                  will populate.</p>
+                </div>
+              </div>
+              <div class="flow-step">
+                <div class="flow-step-icon">→</div>
+                <div class="flow-step-body">
+                  <strong>Deploy polling</strong>
+                  <p>The wizard polls the GitHub Actions API every few seconds, watching for the build
+                  workflow to complete. A progress bar fills as the build runs. When complete, the
+                  live site URL is displayed.</p>
+                </div>
+              </div>
+              <div class="flow-step">
+                <div class="flow-step-icon">→</div>
+                <div class="flow-step-body">
+                  <strong>Encrypted vault handoff</strong>
+                  <p>The user sets an admin password. The wizard encrypts the OAuth token using
+                  AES-256-GCM with the password as the key (via PBKDF2 key derivation). The
+                  encrypted blob is passed to the admin panel via URL hash. The admin panel receives
+                  it, stores it in <code>localStorage</code>, and the user is immediately logged in —
+                  no second password entry needed.</p>
+                </div>
+              </div>
+            </div>
+
+            <p>
+              The result: from pressing "Get Started" to having a live, editable website takes
+              approximately 90 seconds. No command line. No configuration files. No server to manage.
+            </p>
+          </section>
+
+          <section id="admin-panel">
+            <h3>The Admin Panel</h3>
+            <p>
+              The admin panel is a full single-page application (SPA) that lives inside your website at
+              <code>/admin/</code>. Because it is part of the static site, it is hosted on GitHub Pages
+              alongside your content — no separate server needed.
+            </p>
+            <p>
+              It communicates with GitHub's API directly from the browser using the stored OAuth token
+              to read, create, update, and delete content. When you publish a post, the admin panel
+              commits the Markdown file to your GitHub repository, which triggers a rebuild — just as if
+              a developer had pushed code. The full list of capabilities:
+            </p>
+            <ul class="feature-list">
+              <li>Create, edit, and delete blog posts with a visual Markdown editor</li>
+              <li>Create and manage pages (About, Contact, etc.)</li>
+              <li>Upload and manage images</li>
+              <li>Edit site settings (title, description, navigation)</li>
+              <li>Customize theme colors, fonts, and layout</li>
+              <li>View a real-time Markdown preview while writing</li>
+            </ul>
+          </section>
+
+          <section id="auth">
+            <h3>Security and Authentication</h3>
+            <p>
+              Every piece of sensitive information in Jinpa is encrypted at rest using
+              <strong>AES-256-GCM</strong> — a NIST-standardized algorithm used in government and
+              financial systems. Your GitHub token (which allows editing your site) is never stored
+              in plain text. It is encrypted with a key derived from your admin password using
+              <strong>PBKDF2</strong> with 100,000 iterations. This means even if someone accessed
+              your browser's localStorage, they could not use your token without knowing your password.
+            </p>
+            <p>
+              Jinpa never stores your password, your GitHub token, or any personal data on any server.
+              All sensitive material lives encrypted in your own browser. The Cloudflare Worker performs
+              only the OAuth exchange — it does not log or retain any tokens.
+            </p>
+
+            <div class="tip-box">
+              <strong>What "world-first" means here:</strong> The encrypted vault handoff — where a setup
+              wizard encrypts credentials and passes them to a separate admin panel via URL hash without
+              any server intermediary — is a novel authentication pattern that, to our knowledge, has not
+              been publicly documented or implemented elsewhere. Combined with a zero-dependency vanilla JS
+              CMS built specifically for GitHub Pages native deployment, Jinpa represents a genuinely new
+              approach to the content management problem.
+            </div>
+          </section>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- ===== 4. MISSION ===== -->
+        <section id="mission" class="doc-section">
+          <div class="section-label">Our story</div>
+          <h2>Why We Built Jinpa</h2>
+
+          <h3>Who built it</h3>
+          <p>
+            Jinpa was created by <strong>Thupten Chakrishar</strong>, a Tibetan technologist, and a small
+            group of collaborators who believe that the digital divide is not just an economic problem — it
+            is a cultural and historical one. Thupten and collaborators have spent months designing,
+            architecting, and building this system from the ground up, driven by a simple observation:
+            the Tibetan community, one of the world's most culturally rich and historically significant
+            civilizations, is dramatically underrepresented on the internet.
+          </p>
+
+          <h3>The problem we are solving</h3>
+          <p>
+            The web has become the primary archive of human civilization. But participation in that archive
+            is not equal. For a Tibetan monastery, a thangka painter, a traditional medicine practitioner, or
+            a diaspora community organization to have a website today, they typically need either significant
+            technical skill or money to hire developers and pay for hosting. Most have neither. The result
+            is silence — an entire civilization's living knowledge simply absent from the internet.
+          </p>
+
+          <h3>The AI dimension: why this is now urgent</h3>
+          <p>
+            The stakes of this absence have grown dramatically in the last few years. The dominant AI
+            systems shaping the world — GPT, Claude, Gemini, Llama, and dozens of others — are trained
+            on web-crawled data. The largest of these crawls is <strong>Common Crawl</strong>, which
+            indexes billions of web pages every few months and feeds virtually every major AI model
+            trained today.
+          </p>
+          <p>
+            This means that what exists on the internet today directly determines what AI systems will
+            "know" about the world for decades to come. When a Tibetan monastery publishes their founding
+            history, when a thangka painter documents their technique, when a Tibetan writer shares their
+            stories in their own words — that content enters the training data that shapes global AI
+            knowledge. The inverse is equally true: <strong>if a community's knowledge is not documented
+            online in a format these crawlers can read, that community risks being erased from the AI's
+            understanding of human history.</strong>
+          </p>
+          <p>
+            This is not hypothetical. Researchers and communities around the world have begun talking about
+            "data sovereignty" — the right of a people to have their history, language, and culture
+            represented in the systems that increasingly mediate human knowledge. Jinpa is, in part, a
+            direct response to this challenge. Every website created through Jinpa adds Tibetan voices,
+            Tibetan stories, and Tibetan knowledge to the public web in a way that search engines and AI
+            crawlers can read, index, and learn from.
+          </p>
+          <p>
+            The technology is a means to an end. The end is cultural sovereignty on the digital frontier.
+          </p>
+
+          <h3>Why the name "Jinpa"</h3>
+          <p>
+            <em>Jinpa</em> (སྦྱིན་པ་) is the Tibetan word for generosity — the first of the six
+            paramitas, or transcendent virtues, in Buddhist practice. Everything Jinpa offers is free.
+            That is not a business model decision — it is a values decision.
+          </p>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- ===== 5. SUPPORT / GRANT ===== -->
+        <section id="support" class="doc-section">
+          <div class="section-label">Support & funding</div>
+          <h2>What Jinpa Needs to Grow</h2>
+
+          <p class="section-intro">
+            Jinpa has gone from concept to working prototype through months of unpaid work. What exists
+            today is a complete, functional V1 system. What is needed now is the resources to make V1
+            production-ready, secure, and accessible to thousands of people. V2 is a separate, longer-term
+            vision that only becomes relevant after V1 is stable and widely used — see the
+            <a href="#v2">V2 Vision</a> section below.
+          </p>
+
+          <h3>What has been built</h3>
+          <p>
+            The current prototype represents a substantial body of technical work, completed without
+            institutional funding:
+          </p>
+          <ul class="feature-list">
+            <li>A complete Astro website template with 13 core components, fully responsive and accessible</li>
+            <li>A full-featured admin panel (~2,600 lines of vanilla JavaScript) covering all content operations</li>
+            <li>A novel encrypted credential system using browser-native Web Crypto API (AES-256-GCM + PBKDF2)</li>
+            <li>A four-step setup wizard with full GitHub API integration — site live in ~90 seconds</li>
+            <li>A Cloudflare Worker OAuth proxy handling secure token exchange</li>
+            <li>An automated GitHub Actions build and deploy pipeline</li>
+            <li>A plugin system architecture for future extensibility</li>
+          </ul>
+          <p>
+            This system is, to our knowledge, the <strong>first open-source website creation platform
+            purpose-built for the Tibetan community</strong>, and the first CMS of its kind to implement
+            GitHub-native deployment with a zero-dependency browser admin and an encrypted vault
+            handoff authentication pattern.
+          </p>
+
+          <h3>Why it is urgent</h3>
+          <p>
+            The window for shaping AI training data is not infinite. The models being trained today and
+            in the next few years will encode a particular understanding of the world that will be very
+            difficult to correct later. Every month without Tibetan voices on the web is a month of
+            absence in that record. Beyond AI, the generation of elders who hold living knowledge of
+            Tibetan traditions, medicine, art, and history is aging. Digital documentation cannot wait
+            indefinitely.
+          </p>
+
+          <h3>What funding would support — V1</h3>
+          <p>These are all V1 priorities: making the current system production-grade and reaching
+          the communities it was built for. V2 development is a separate future phase that comes
+          after V1 is stable.</p>
+
+          <div class="needs-grid">
+            <div class="need-card">
+              <h4>Infrastructure & Security</h4>
+              <ul>
+                <li>Security audits of the authentication and encryption systems</li>
+                <li>OAuth server hardening and rate limiting</li>
+                <li>High-volume CI/CD pipeline capacity for thousands of simultaneous builds</li>
+                <li>Monitoring, alerting, and uptime guarantees</li>
+                <li>Penetration testing and vulnerability disclosure program</li>
+              </ul>
+            </div>
+
+            <div class="need-card">
+              <h4>Ongoing Engineering</h4>
+              <ul>
+                <li>Continuous bug fixes and compatibility updates as browsers evolve</li>
+                <li>GitHub API maintenance as their platform changes</li>
+                <li>Performance optimization and mobile improvements</li>
+                <li>Accessibility audits and compliance</li>
+                <li>New template designs — portfolio, organization, archive, teaching</li>
+              </ul>
+            </div>
+
+            <div class="need-card">
+              <h4>Tibetan Language Support</h4>
+              <ul>
+                <li>Full Tibetan script (Uchen) interface localization</li>
+                <li>Wylie transliteration input support</li>
+                <li>Tibetan font integration (Noto Serif Tibetan, Jomolhari)</li>
+                <li>Right-to-left and vertical text layout research</li>
+                <li>Translation of all documentation into Tibetan</li>
+              </ul>
+            </div>
+
+            <div class="need-card">
+              <h4>Community & Outreach</h4>
+              <ul>
+                <li>In-person onboarding workshops in Dharamsala, Bylakuppe, and other settlements</li>
+                <li>Documentation and video tutorials in Tibetan and English</li>
+                <li>Community support and helpdesk</li>
+                <li>Partnerships with monasteries, schools, and cultural organizations</li>
+                <li>User research to understand real community needs</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3>Why Jinpa is a uniquely sustainable model</h3>
+          <p>
+            Unlike most technology projects targeting underserved communities, Jinpa does not create
+            dependency on continued funding for the websites it creates. This is by design:
+          </p>
+
+          <div class="sustain-points">
+            <div class="sustain-point">
+              <div class="sustain-icon">∞</div>
+              <div>
+                <strong>Websites live forever at zero cost.</strong> Because every Jinpa site is hosted on
+                GitHub Pages — a free service backed by Microsoft — websites created through Jinpa will
+                remain online permanently with no hosting fees. Even if Jinpa's funding ends tomorrow,
+                every site already created continues to exist and can be edited by its owner.
+              </div>
+            </div>
+            <div class="sustain-point">
+              <div class="sustain-icon">⊕</div>
+              <div>
+                <strong>Open source at every layer.</strong> The Jinpa template, admin panel, and setup
+                wizard are all open source under a permissive license. The community can fork, adapt, and
+                build on the work independently. No single organization controls it.
+              </div>
+            </div>
+            <div class="sustain-point">
+              <div class="sustain-icon">◎</div>
+              <div>
+                <strong>Lowering the barrier for a specific community.</strong> Jinpa is not a
+                general-purpose website builder competing with Wix or Squarespace. It is built for people
+                who have been systematically excluded from the digital publishing space due to language,
+                technical, and economic barriers. The impact per dollar is exceptionally high when the
+                alternative is no web presence at all.
+              </div>
+            </div>
+            <div class="sustain-point">
+              <div class="sustain-icon">◈</div>
+              <div>
+                <strong>Data sovereignty by default.</strong> Every user owns their own GitHub repository.
+                Their content is not locked into Jinpa's servers. The files are standard Markdown —
+                readable by any tool, archivable by any library, exportable at any time. This is
+                infrastructure for cultural preservation, not a platform that can hold content hostage.
+              </div>
+            </div>
+          </div>
+
+          <div class="support-cta">
+            <h3>Get in touch</h3>
+            <p>
+              If you represent a foundation, grant-making organization, or institution interested in
+              supporting Jinpa's development or learning more about the project, please reach out via
+              <a href="https://github.com/getjinpa" target="_blank" rel="noopener noreferrer">GitHub</a>
+              or open an issue in the repository. We are grateful for any form of support — code
+              contributions, design, translation, outreach, or funding.
+            </p>
+          </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- ===== V2 VISION ===== -->
+        <section id="v2" class="doc-section">
+          <div class="section-label">Future roadmap</div>
+          <h2>V2 Vision: Zero-Account Publishing</h2>
+          <p class="section-intro">
+            The current version of Jinpa (V1) requires every user to have a GitHub account. That is already
+            simpler than any comparable platform — but it is still one step too many. A monk in Bylakuppe
+            should not need to understand what GitHub is to have a website. V2 removes that requirement
+            entirely.
+          </p>
+
+          <div class="v2-comparison">
+            <div class="v2-col">
+              <div class="v2-col-header v2-col-current">
+                <span class="v2-badge">V1 — Today</span>
+                <h4>User-owned GitHub</h4>
+              </div>
+              <ul class="v2-list">
+                <li class="pro">User fully owns their GitHub repository</li>
+                <li class="pro">Site lives on indefinitely even if Jinpa closes</li>
+                <li class="pro">Simpler to build and maintain</li>
+                <li class="con">Requires creating a GitHub account</li>
+                <li class="con">GitHub account management (2FA, password reset) falls on the user</li>
+                <li class="con">Custom domains require manual DNS configuration</li>
+              </ul>
+            </div>
+            <div class="v2-col">
+              <div class="v2-col-header v2-col-next">
+                <span class="v2-badge v2-badge-next">V2 — Planned</span>
+                <h4>Jinpa-managed hosting</h4>
+              </div>
+              <ul class="v2-list">
+                <li class="pro">Sign up with just an email and password</li>
+                <li class="pro">No GitHub account required at any point</li>
+                <li class="pro">Custom domains with one DNS record (not five)</li>
+                <li class="pro">Jinpa handles SSL, routing, and domain verification automatically</li>
+                <li class="con">Sites live in Jinpa's GitHub org (not user's own account)</li>
+                <li class="con">Adds backend complexity: user auth, password reset, subdomain routing</li>
+              </ul>
+            </div>
+          </div>
+
+          <section id="v2-no-github">
+            <h3>How V2 works: no GitHub account required</h3>
+            <p>
+              In V2, Jinpa runs a shared GitHub organization (already exists: <code>getjinpa</code>).
+              When a user creates a site, Jinpa's own service account creates the repository
+              (e.g., <code>getjinpa/site-sera-monastery</code>) using a server-side Cloudflare Worker.
+              The user never interacts with GitHub directly. From their perspective, they visit
+              <strong>getjinpa.com</strong>, type an email and password, name their site, and it is live —
+              the same ~90 second experience, but with zero GitHub knowledge required.
+            </p>
+            <p>
+              All site builds still run on GitHub Actions (free for public repositories), and all sites
+              are still hosted on GitHub Pages (free, permanent). The user's data is still in a standard
+              Git repository with standard Markdown files. What changes is that Jinpa holds the repository
+              on behalf of the user, rather than the user owning it directly.
+            </p>
+            <div class="tip-box">
+              <strong>On scale and cost.</strong> GitHub imposes no limit on the number of public
+              repositories an organization can have, and GitHub Actions minutes are unlimited for public
+              repositories. Hosting hundreds or thousands of sites this way is free. The only operational
+              cost is the Cloudflare Worker (well within the generous free tier at this scale).
+            </div>
+          </section>
+
+          <section id="v2-password">
+            <h3>Controlling your site with a password</h3>
+            <p>
+              In V2, users authenticate with Jinpa's own system — not GitHub. Under the hood:
+            </p>
+            <div class="flow-steps">
+              <div class="flow-step">
+                <div class="flow-step-icon">→</div>
+                <div class="flow-step-body">
+                  <strong>Account creation</strong>
+                  <p>User picks an email and password. Jinpa stores a securely hashed password
+                  (bcrypt) in a lightweight database — likely Cloudflare D1 (SQLite at the edge)
+                  or Cloudflare KV. No GitHub credentials are ever shared with or entered by the user.</p>
+                </div>
+              </div>
+              <div class="flow-step">
+                <div class="flow-step-icon">→</div>
+                <div class="flow-step-body">
+                  <strong>Session tokens</strong>
+                  <p>On login, a short-lived session token is issued (JWT or opaque token stored in
+                  a secure, httpOnly cookie). The admin panel uses this token to authenticate API
+                  calls to Jinpa's Worker, which then calls GitHub's API using Jinpa's service
+                  account token.</p>
+                </div>
+              </div>
+              <div class="flow-step">
+                <div class="flow-step-icon">→</div>
+                <div class="flow-step-body">
+                  <strong>Repo-scoped access</strong>
+                  <p>Each user can only read and write to their own repository. The Worker enforces
+                  this: every API call is validated against the user's session before proxying to
+                  GitHub. A user cannot access or modify another user's site.</p>
+                </div>
+              </div>
+              <div class="flow-step">
+                <div class="flow-step-icon">→</div>
+                <div class="flow-step-body">
+                  <strong>Password reset</strong>
+                  <p>Standard email-based password reset flow — a time-limited token sent to the
+                  user's email, handled entirely by Jinpa. No GitHub account recovery needed.</p>
+                </div>
+              </div>
+            </div>
+            <p>
+              The admin panel experience is unchanged. The user still types a password to unlock
+              their site editor. The only difference is that the password is now Jinpa's own auth
+              system rather than a locally encrypted GitHub token.
+            </p>
+          </section>
+
+          <section id="v2-domain">
+            <h3>One-record custom domains</h3>
+            <p>
+              The current V1 custom domain process requires adding four A records and one CNAME — five
+              DNS changes across two record types, plus manual steps inside GitHub. In V2 this collapses
+              to <strong>one record</strong>.
+            </p>
+            <p>
+              V2 sites are routed through a Cloudflare Worker that sits in front of GitHub Pages. This
+              means Jinpa controls the domain routing layer. Using Cloudflare's
+              <strong>Custom Hostnames</strong> feature (part of their "Cloudflare for SaaS" product),
+              the flow becomes:
+            </p>
+
+            <div class="flow-steps">
+              <div class="flow-step">
+                <div class="flow-step-icon">→</div>
+                <div class="flow-step-body">
+                  <strong>User enters their domain in the admin panel</strong>
+                  <p>They type <code>seramonastery.org</code> in Settings → Custom Domain.
+                  Jinpa registers it as a custom hostname with Cloudflare.</p>
+                </div>
+              </div>
+              <div class="flow-step">
+                <div class="flow-step-icon">→</div>
+                <div class="flow-step-body">
+                  <strong>Jinpa shows one instruction</strong>
+                  <p>The admin panel displays a single DNS record to add at the domain registrar:</p>
+                  <div class="dns-table-wrap" style="margin-top: 0.75rem;">
+                    <table class="dns-table">
+                      <thead><tr><th>Type</th><th>Name</th><th>Value</th></tr></thead>
+                      <tbody>
+                        <tr>
+                          <td><code>CNAME</code></td>
+                          <td><code>www</code></td>
+                          <td><code>sites.getjinpa.com</code></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <p style="margin-top: 0.75rem; font-size: var(--text-sm);">That is it. One record. The user goes to their registrar (GoDaddy, Namecheap,
+                  Google Domains, etc.), adds this single line, and is done.</p>
+                </div>
+              </div>
+              <div class="flow-step">
+                <div class="flow-step-icon">→</div>
+                <div class="flow-step-body">
+                  <strong>Jinpa handles everything else automatically</strong>
+                  <p>Cloudflare detects when DNS propagates, automatically provisions an SSL
+                  certificate (HTTPS), and begins routing <code>seramonastery.org</code> to the
+                  correct site. The admin panel polls for verification and shows a green
+                  confirmation when the domain is live.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="tip-box">
+              <strong>What about the apex domain (<code>seramonastery.org</code> without www)?</strong>
+              Some registrars support <code>ALIAS</code> or <code>ANAME</code> records that work like
+              CNAME for root domains. Alternatively, Jinpa can instruct users to transfer DNS management
+              to Cloudflare (free), which enables the same one-record setup for the root domain too.
+              For most community organizations, <code>www.seramonastery.org</code> redirecting to
+              <code>seramonastery.org</code> (or vice versa) is handled automatically by the Worker.
+            </div>
+
+            <h4 style="margin-top: var(--space-xl);">V1 vs V2 custom domain comparison</h4>
+            <div class="dns-table-wrap">
+              <table class="dns-table">
+                <thead>
+                  <tr><th>Step</th><th>V1 (today)</th><th>V2 (planned)</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>DNS records to add</td>
+                    <td>5 (four A records + one CNAME)</td>
+                    <td><strong>1</strong> (one CNAME)</td>
+                  </tr>
+                  <tr>
+                    <td>GitHub Pages settings</td>
+                    <td>Must be configured manually</td>
+                    <td>Not needed (Jinpa proxies)</td>
+                  </tr>
+                  <tr>
+                    <td>HTTPS / SSL</td>
+                    <td>Must enable "Enforce HTTPS" manually</td>
+                    <td>Automatic (Cloudflare)</td>
+                  </tr>
+                  <tr>
+                    <td>Verification</td>
+                    <td>Manual check in GitHub</td>
+                    <td>Automatic, shown in admin panel</td>
+                  </tr>
+                  <tr>
+                    <td>Technical knowledge needed</td>
+                    <td>Moderate (understand DNS record types)</td>
+                    <td>Minimal (copy one value)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <div class="v2-cta">
+            <div class="v2-cta-text">
+              <h3>V2: A future milestone</h3>
+              <p>
+                The architecture for V2 is fully designed. It is a longer-term vision that we will
+                pursue after V1 is stable, secure, and serving the community it was built for.
+                Once V1 reaches that stage, V2 development becomes the natural next phase.
+              </p>
+            </div>
+          </div>
+
+        </section>
+
+      </main>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  /* ===== Page Layout ===== */
+  .docs-page {
+    min-height: 100vh;
+  }
+
+  .docs-hero {
+    background: var(--bg-hero-gradient);
+    color: var(--text-inverse);
+    padding: var(--space-4xl) 0 var(--space-3xl);
+  }
+
+  .docs-hero .badge {
+    background: rgba(255,255,255,0.15);
+    border-color: rgba(255,255,255,0.25);
+    color: white;
+    margin-bottom: var(--space-lg);
+  }
+
+  .docs-hero h1 {
+    font-size: var(--text-5xl);
+    font-weight: 800;
+    color: white;
+    margin-bottom: var(--space-lg);
+    letter-spacing: -0.02em;
+  }
+
+  .docs-hero-sub {
+    font-size: var(--text-lg);
+    color: rgba(255,255,255,0.75);
+    max-width: 600px;
+    line-height: var(--leading-relaxed);
+  }
+
+  /* ===== Two-column layout ===== */
+  .docs-layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: var(--space-3xl);
+    align-items: start;
+    padding-top: var(--space-3xl);
+    padding-bottom: var(--space-5xl);
+  }
+
+  /* ===== TOC ===== */
+  .docs-toc {
+    position: sticky;
+    top: calc(var(--header-height) + var(--space-lg));
+  }
+
+  .toc-inner {
+    background: var(--bg-surface-raised);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    padding: var(--space-lg);
+  }
+
+  .toc-title {
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-tertiary);
+    margin-bottom: var(--space-md);
+  }
+
+  .toc-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+
+  .toc-sub {
+    list-style: none;
+    padding-left: var(--space-md);
+    margin-top: 0.125rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+
+  .toc-link {
+    display: block;
+    padding: 0.375rem 0.5rem;
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-radius: var(--border-radius-sm);
+    transition: all var(--transition-fast);
+    font-weight: 500;
+  }
+
+  .toc-link-sub {
+    display: block;
+    padding: 0.25rem 0.5rem;
+    font-size: var(--text-xs);
+    color: var(--text-tertiary);
+    text-decoration: none;
+    border-radius: var(--border-radius-sm);
+    transition: all var(--transition-fast);
+  }
+
+  .toc-link:hover,
+  .toc-link-sub:hover {
+    background: var(--border-color);
+    color: var(--text-primary);
+  }
+
+  /* ===== Content ===== */
+  .docs-content {
+    min-width: 0;
+  }
+
+  .doc-section {
+    margin-bottom: var(--space-3xl);
+  }
+
+  .section-label {
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-primary);
+    margin-bottom: var(--space-sm);
+  }
+
+  .doc-section > h2 {
+    font-size: var(--text-3xl);
+    font-weight: 800;
+    margin-bottom: var(--space-md);
+    letter-spacing: -0.02em;
+  }
+
+  .doc-section h3 {
+    font-size: var(--text-xl);
+    font-weight: 700;
+    margin-top: var(--space-2xl);
+    margin-bottom: var(--space-md);
+  }
+
+  .section-intro {
+    font-size: var(--text-lg);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-2xl);
+  }
+
+  .doc-section p {
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-md);
+  }
+
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border-color);
+    margin: var(--space-3xl) 0;
+  }
+
+  /* ===== Step Guide ===== */
+  .steps-guide {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .guide-step {
+    display: flex;
+    gap: var(--space-lg);
+    padding-bottom: var(--space-2xl);
+    position: relative;
+  }
+
+  .guide-step:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    left: 1.125rem;
+    top: 2.5rem;
+    bottom: 0;
+    width: 2px;
+    background: var(--border-color);
+  }
+
+  .guide-step-num {
+    width: 2.25rem;
+    height: 2.25rem;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text-sm);
+    font-weight: 800;
+    background: var(--color-primary);
+    color: white;
+    border-radius: var(--border-radius-full);
+    position: relative;
+    z-index: 1;
+  }
+
+  .guide-step-body {
+    flex: 1;
+    padding-top: 0.35rem;
+  }
+
+  .guide-step-body h3 {
+    font-size: var(--text-lg);
+    margin-top: 0;
+    margin-bottom: var(--space-sm);
+  }
+
+  .guide-list {
+    padding-left: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    color: var(--text-secondary);
+  }
+
+  .guide-list li {
+    line-height: var(--leading-relaxed);
+  }
+
+  /* ===== Tip Box ===== */
+  .tip-box {
+    background: var(--color-primary-50);
+    border: 1px solid var(--color-primary-200);
+    border-left: 4px solid var(--color-primary);
+    border-radius: var(--border-radius-md);
+    padding: var(--space-md) var(--space-lg);
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+    margin-top: var(--space-md);
+  }
+
+  .tip-box.success {
+    background: var(--color-success-light);
+    border-color: #6ee7b7;
+    border-left-color: var(--color-success);
+  }
+
+  .tip-box strong {
+    color: var(--text-primary);
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .tip-box {
+      background: rgba(37, 99, 235, 0.1);
+      border-color: rgba(37, 99, 235, 0.3);
+    }
+    .tip-box.success {
+      background: rgba(16, 185, 129, 0.1);
+      border-color: rgba(16, 185, 129, 0.3);
+    }
+  }
+
+  /* ===== DNS Table ===== */
+  .dns-table-wrap {
+    overflow-x: auto;
+    margin: var(--space-lg) 0;
+    border-radius: var(--border-radius-lg);
+    border: 1px solid var(--border-color);
+  }
+
+  .dns-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--text-sm);
+  }
+
+  .dns-table th {
+    background: var(--bg-surface-raised);
+    padding: 0.75rem var(--space-md);
+    text-align: left;
+    font-weight: 600;
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .dns-table td {
+    padding: 0.75rem var(--space-md);
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-secondary);
+  }
+
+  .dns-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .dns-table code {
+    font-family: var(--font-mono);
+    font-size: 0.8em;
+    background: var(--bg-surface-raised);
+    padding: 0.1em 0.4em;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+  }
+
+  /* ===== Tech Cards ===== */
+  .tech-cards {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+  }
+
+  .tech-card {
+    background: var(--bg-surface-raised);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    padding: var(--space-lg) var(--space-xl);
+  }
+
+  .tech-card-jinpa {
+    border-color: var(--color-primary-200);
+    background: linear-gradient(135deg, var(--color-primary-50) 0%, var(--bg-surface) 60%);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .tech-card-jinpa {
+      border-color: rgba(37, 99, 235, 0.35);
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, var(--bg-surface) 60%);
+    }
+  }
+
+  .tech-tag-jinpa {
+    background: var(--color-primary);
+    border-color: var(--color-primary-dark);
+    color: white;
+  }
+
+  .tech-card-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-sm);
+  }
+
+  .tech-tag {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-primary);
+    background: var(--color-primary-50);
+    border: 1px solid var(--color-primary-100);
+    padding: 0.15em 0.5em;
+    border-radius: var(--border-radius-full);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .tech-tag {
+      background: rgba(37, 99, 235, 0.15);
+      border-color: rgba(37, 99, 235, 0.25);
+      color: var(--color-primary-light);
+    }
+  }
+
+  .tech-card-header strong {
+    font-size: var(--text-base);
+    font-weight: 700;
+  }
+
+  .tech-card p {
+    font-size: var(--text-sm);
+    margin-bottom: 0;
+  }
+
+  /* ===== Flow Steps ===== */
+  .flow-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin: var(--space-lg) 0;
+    border-left: 2px solid var(--border-color);
+    padding-left: var(--space-lg);
+  }
+
+  .flow-step {
+    display: flex;
+    gap: var(--space-md);
+    padding-bottom: var(--space-lg);
+    position: relative;
+  }
+
+  .flow-step-icon {
+    position: absolute;
+    left: calc(-1 * var(--space-lg) - 0.6rem);
+    top: 0.1rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    background: var(--color-primary);
+    color: white;
+    border-radius: var(--border-radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6rem;
+    font-weight: 900;
+    flex-shrink: 0;
+  }
+
+  .flow-step-body {
+    flex: 1;
+  }
+
+  .flow-step-body strong {
+    display: block;
+    font-size: var(--text-base);
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+  }
+
+  .flow-step-body p {
+    font-size: var(--text-sm);
+    margin-bottom: 0;
+  }
+
+  /* ===== Feature List ===== */
+  .feature-list {
+    padding-left: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    color: var(--text-secondary);
+    margin: var(--space-md) 0;
+  }
+
+  .feature-list li {
+    line-height: var(--leading-relaxed);
+  }
+
+  /* ===== Numbered List ===== */
+  .numbered-list {
+    padding-left: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    color: var(--text-secondary);
+    margin: var(--space-md) 0;
+  }
+
+  .numbered-list li {
+    line-height: var(--leading-relaxed);
+  }
+
+  /* ===== Needs Grid ===== */
+  .needs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+    margin: var(--space-lg) 0;
+  }
+
+  .need-card {
+    background: var(--bg-surface-raised);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    padding: var(--space-lg);
+  }
+
+  .need-card h4 {
+    font-size: var(--text-base);
+    font-weight: 700;
+    margin-bottom: var(--space-md);
+    color: var(--text-primary);
+  }
+
+  .need-card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .need-card li {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+    padding-left: var(--space-md);
+    position: relative;
+  }
+
+  .need-card li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+    font-weight: 700;
+  }
+
+  /* ===== Sustainability Points ===== */
+  .sustain-points {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    margin: var(--space-lg) 0;
+  }
+
+  .sustain-point {
+    display: flex;
+    gap: var(--space-lg);
+    align-items: flex-start;
+  }
+
+  .sustain-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    background: var(--color-primary-50);
+    border: 1px solid var(--color-primary-100);
+    border-radius: var(--border-radius-lg);
+    color: var(--color-primary);
+    font-weight: 900;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .sustain-icon {
+      background: rgba(37, 99, 235, 0.15);
+      border-color: rgba(37, 99, 235, 0.25);
+      color: var(--color-primary-light);
+    }
+  }
+
+  .sustain-point div {
+    flex: 1;
+  }
+
+  .sustain-point strong {
+    display: block;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+  }
+
+  .sustain-point p {
+    font-size: var(--text-sm);
+    margin-bottom: 0;
+  }
+
+  /* ===== Support CTA ===== */
+  .support-cta {
+    background: var(--bg-hero-gradient);
+    border-radius: var(--border-radius-xl);
+    padding: var(--space-2xl);
+    margin-top: var(--space-2xl);
+  }
+
+  .support-cta h3 {
+    color: white;
+    margin-top: 0;
+  }
+
+  .support-cta p {
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 0;
+  }
+
+  .support-cta a {
+    color: white;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  /* ===== Code ===== */
+  code {
+    font-family: var(--font-mono);
+    font-size: 0.85em;
+    background: var(--bg-surface-raised);
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+  }
+
+  /* ===== V2 Comparison ===== */
+  .v2-comparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+    margin: var(--space-xl) 0;
+  }
+
+  .v2-col {
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+  }
+
+  .v2-col-header {
+    padding: var(--space-md) var(--space-lg);
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .v2-col-current {
+    background: var(--bg-surface-raised);
+  }
+
+  .v2-col-next {
+    background: var(--color-primary-50);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .v2-col-next {
+      background: rgba(37, 99, 235, 0.1);
+    }
+  }
+
+  .v2-col-header h4 {
+    font-size: var(--text-base);
+    font-weight: 700;
+    margin: 0.25rem 0 0;
+  }
+
+  .v2-badge {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-tertiary);
+  }
+
+  .v2-badge-next {
+    color: var(--color-primary);
+  }
+
+  .v2-list {
+    list-style: none;
+    padding: var(--space-md) var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .v2-list li {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+    padding-left: 1.25rem;
+    position: relative;
+  }
+
+  .v2-list li.pro::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-success);
+    font-weight: 700;
+    font-size: 0.75em;
+    top: 0.2em;
+  }
+
+  .v2-list li.con::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--text-tertiary);
+    font-weight: 700;
+  }
+
+  /* ===== V2 CTA ===== */
+  .v2-cta {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(29, 78, 216, 0.12));
+    border: 1px solid var(--color-primary-200);
+    border-radius: var(--border-radius-xl);
+    padding: var(--space-2xl);
+    margin-top: var(--space-2xl);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .v2-cta {
+      background: rgba(37, 99, 235, 0.1);
+      border-color: rgba(37, 99, 235, 0.25);
+    }
+  }
+
+  .v2-cta h3 {
+    margin-top: 0;
+    color: var(--color-primary);
+  }
+
+  .v2-cta p {
+    margin-bottom: 0;
+    font-size: var(--text-base);
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 900px) {
+    .docs-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .docs-toc {
+      position: static;
+      order: -1;
+    }
+
+    .toc-inner {
+      display: flex;
+      gap: var(--space-2xl);
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+
+    .toc-title {
+      width: 100%;
+      margin-bottom: var(--space-xs);
+    }
+
+    .toc-list {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+
+    .toc-sub {
+      display: none;
+    }
+
+    .needs-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .v2-comparison {
+      grid-template-columns: 1fr;
+    }
+
+    .docs-hero h1 {
+      font-size: var(--text-4xl);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .docs-hero h1 {
+      font-size: var(--text-3xl);
+    }
+
+    .doc-section > h2 {
+      font-size: var(--text-2xl);
+    }
+  }
+</style>
+
+<script>
+  // Highlight active TOC link based on scroll position
+  const tocLinks = document.querySelectorAll('.toc-link, .toc-link-sub');
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          tocLinks.forEach(link => link.classList.remove('active'));
+          const active = document.querySelector(`.toc-link[href="#${entry.target.id}"], .toc-link-sub[href="#${entry.target.id}"]`);
+          if (active) active.classList.add('active');
+        }
+      }
+    },
+    { rootMargin: '-20% 0% -70% 0%' }
+  );
+
+  document.querySelectorAll('section[id]').forEach(s => observer.observe(s));
+</script>
+
+<style>
+  .toc-link.active,
+  .toc-link-sub.active {
+    background: var(--color-primary-50);
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .toc-link.active,
+    .toc-link-sub.active {
+      background: rgba(37, 99, 235, 0.15);
+      color: var(--color-primary-light);
+    }
+  }
+</style>

@@ -38,6 +38,7 @@ const currentYear = new Date().getFullYear();
       <div class="footer-links-group">
         <h4 class="footer-links-title">Resources</h4>
         <ul class="footer-links">
+          <li><a href="/docs">Documentation</a></li>
           <li><a href="https://github.com/getjinpa" target="_blank" rel="noopener noreferrer">GitHub</a></li>
           <li><a href="https://pages.github.com" target="_blank" rel="noopener noreferrer">GitHub Pages</a></li>
           <li><a href="https://astro.build" target="_blank" rel="noopener noreferrer">Built with Astro</a></li>
@@ -68,8 +69,8 @@ const currentYear = new Date().getFullYear();
   .site-footer {
     margin-top: auto;
     padding: var(--space-4xl) 0 var(--space-xl);
-    background: var(--bg-surface-raised);
-    border-top: 1px solid var(--border-color);
+    background: #0D1117;
+    border-top: none;
   }
 
   .footer-grid {
@@ -85,28 +86,28 @@ const currentYear = new Date().getFullYear();
     gap: 0.5rem;
     font-size: var(--text-lg);
     font-weight: 800;
-    color: var(--text-primary);
+    color: rgba(255, 255, 255, 0.9);
     text-decoration: none;
     margin-bottom: var(--space-md);
   }
 
   .footer-logo:hover {
-    color: var(--text-primary);
+    color: #ffffff;
   }
 
   .footer-tagline {
     font-size: var(--text-sm);
-    color: var(--text-tertiary);
+    color: rgba(255, 255, 255, 0.42);
     line-height: var(--leading-relaxed);
   }
 
   .footer-links-title {
-    font-size: var(--text-sm);
+    font-size: var(--text-xs);
     font-weight: 600;
-    color: var(--text-primary);
+    color: rgba(255, 255, 255, 0.5);
     margin-bottom: var(--space-md);
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
   }
 
   .footer-links {
@@ -118,13 +119,13 @@ const currentYear = new Date().getFullYear();
 
   .footer-links a {
     font-size: var(--text-sm);
-    color: var(--text-tertiary);
+    color: rgba(255, 255, 255, 0.48);
     text-decoration: none;
     transition: color var(--transition-fast);
   }
 
   .footer-links a:hover {
-    color: var(--text-primary);
+    color: rgba(255, 255, 255, 0.9);
   }
 
   .footer-bottom {
@@ -132,13 +133,13 @@ const currentYear = new Date().getFullYear();
     align-items: center;
     justify-content: space-between;
     padding-top: var(--space-xl);
-    border-top: 1px solid var(--border-color);
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
   }
 
   .footer-copyright,
   .footer-attribution {
     font-size: var(--text-sm);
-    color: var(--text-tertiary);
+    color: rgba(255, 255, 255, 0.28);
   }
 
   @media (max-width: 768px) {

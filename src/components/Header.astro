@@ -27,6 +27,7 @@ const { currentPage = '' } = Astro.props;
       <a href="/" class:list={['nav-link', { active: currentPage === 'home' }]}>Home</a>
       <a href="/templates" class:list={['nav-link', { active: currentPage === 'templates' }]}>Templates</a>
       <a href="/about" class:list={['nav-link', { active: currentPage === 'about' }]}>About</a>
+      <a href="/docs" class:list={['nav-link', { active: currentPage === 'docs' }]}>Docs</a>
       <a href="https://github.com/getjinpa" class="nav-link" target="_blank" rel="noopener noreferrer">
         GitHub
         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true" style="margin-left: 2px; opacity: 0.5;">
@@ -54,6 +55,7 @@ const { currentPage = '' } = Astro.props;
       <a href="/" class="mobile-nav-link">Home</a>
       <a href="/templates" class="mobile-nav-link">Templates</a>
       <a href="/about" class="mobile-nav-link">About</a>
+      <a href="/docs" class="mobile-nav-link">Docs</a>
       <a href="https://github.com/getjinpa" class="mobile-nav-link" target="_blank" rel="noopener noreferrer">GitHub</a>
       <div style="padding-top: 0.5rem;">
         <a href="/templates" class="btn btn-primary" style="width: 100%;">Get Started</a>
