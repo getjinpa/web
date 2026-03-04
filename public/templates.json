@@ -61,6 +61,16 @@
       "features": ["archive", "search", "rss", "seo"]
     },
     {
+      "name": "Pebble",
+      "slug": "artist-minimal",
+      "repo": "getjinpa/pebble",
+      "description": "A minimal one-page artist site. Name, bio, a gallery of works, and social links — nothing more. Clean, warm, and elegant.",
+      "thumbnail": "/thumbnails/pebble.jpg",
+      "preview": "https://getjinpa.github.io/pebble/",
+      "category": "artist",
+      "features": ["onePage", "gallery", "minimal", "responsive"]
+    },
+    {
       "name": "Common Ground",
       "slug": "organization",
       "repo": "getjinpa/common-ground",
