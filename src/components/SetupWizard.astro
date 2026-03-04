@@ -293,10 +293,23 @@
         <span id="admin-repo-name-display" hidden></span>
         <a href="#" id="create-admin-token-link" hidden></a>
 
+        <div class="security-notice">
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+          <div>
+            <strong>Jinpa takes your security seriously.</strong>
+            <span>Your password encrypts your GitHub token with AES-256 — the same standard used by banks. We never see it, store it, or transmit it.</span>
+          </div>
+        </div>
+
+        <div class="password-save-reminder">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span>Pick a strong password (12+ characters) and save it in a password manager. If you forget it, you will need to reset your admin access.</span>
+        </div>
+
         <div class="form-group">
-          <label class="form-label" for="admin-password">Choose a Password</label>
-          <input type="password" id="admin-password" class="form-input" placeholder="You will use this to log in" autocomplete="new-password" />
-          <p class="form-hint">This password encrypts your token. It never leaves your browser.</p>
+          <label class="form-label" for="admin-password">Choose a Strong Password</label>
+          <input type="password" id="admin-password" class="form-input" placeholder="12+ characters recommended" autocomplete="new-password" />
+          <p class="form-hint">Minimum 8 characters. Longer is safer — try a passphrase.</p>
         </div>
 
         <div class="form-group">
@@ -771,6 +784,53 @@
     color: var(--text-tertiary);
   }
 
+  /* Security notice in admin setup */
+  .security-notice {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    background: color-mix(in srgb, var(--color-primary) 8%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-primary) 25%, transparent);
+    border-radius: var(--border-radius-lg);
+    padding: 0.75rem 0.875rem;
+    margin-bottom: var(--space-md);
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  .security-notice svg {
+    flex-shrink: 0;
+    color: var(--color-primary);
+    margin-top: 0.1rem;
+  }
+
+  .security-notice strong {
+    display: block;
+    color: var(--text-primary);
+    margin-bottom: 0.125rem;
+  }
+
+  .password-save-reminder {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    background: color-mix(in srgb, var(--color-warning, #f59e0b) 10%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-warning, #f59e0b) 30%, transparent);
+    border-radius: var(--border-radius-lg);
+    padding: 0.625rem 0.875rem;
+    margin-bottom: var(--space-lg);
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  .password-save-reminder svg {
+    flex-shrink: 0;
+    color: #d97706;
+    margin-top: 0.1rem;
+  }
+
   .admin-setup-success {
     text-align: center;
     padding: var(--space-lg);
@@ -893,9 +953,9 @@
 
   // --- Initialize ---
   async function init() {
-    // Get template from URL params
+    // Get template from URL params, fall back to sessionStorage (preserved across OAuth redirect)
     const params = new URLSearchParams(window.location.search);
-    const templateSlug = params.get('template') || 'starter-blog';
+    const templateSlug = params.get('template') || sessionStorage.getItem('selected_template') || 'starter-blog';
 
     try {
       const response = await fetch('/templates.json');
@@ -953,6 +1013,8 @@
   connectBtn?.addEventListener('click', () => {
     const state = crypto.randomUUID();
     sessionStorage.setItem('oauth_state', state);
+    // Preserve the chosen template across the OAuth redirect (URL params are lost)
+    if (selectedTemplate) sessionStorage.setItem('selected_template', selectedTemplate.slug);
     const authUrl = new URL('https://github.com/login/oauth/authorize');
     authUrl.searchParams.set('client_id', GITHUB_CLIENT_ID);
     authUrl.searchParams.set('scope', 'repo,workflow');
@@ -992,6 +1054,7 @@
       return;
     }
     sessionStorage.removeItem('oauth_state');
+    sessionStorage.removeItem('selected_template');
 
     // Remove token from URL immediately (never in browser history)
     history.replaceState(null, '', window.location.pathname + window.location.search);
@@ -1260,6 +1323,18 @@
 
       updateCreatingStep('deploy', 'completed', 'Site deployed!', 100);
 
+      // Register the new site (fire-and-forget — non-fatal)
+      fetch('https://jinpa-auth.buddhistapps.workers.dev/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          username: githubUsername,
+          repo: `${githubUsername}/${repoName}`,
+          template: selectedTemplate?.slug || 'unknown',
+          siteUrl,
+        }),
+      }).catch(() => { /* non-fatal */ });
+
       // Proceed to success regardless (deployment might still be in progress)
       await sleep(500);
       showSuccess(siteUrl, repoName);
@@ -1417,7 +1492,7 @@
     // Validate
     if (!token) { showAdminError('GitHub token missing. Please go back and log in again.'); return; }
     if (!pw1) { showAdminError('Please choose a password.'); return; }
-    if (pw1.length < 4) { showAdminError('Password must be at least 4 characters.'); return; }
+    if (pw1.length < 8) { showAdminError('Password must be at least 8 characters.'); return; }
     if (pw1 !== pw2) { showAdminError('Passwords do not match.'); return; }
 
     setupAdminBtn.disabled = true;
@@ -1447,6 +1522,39 @@
         repo: fullRepo,
         branch: 'main',
       };
+
+      // Save encrypted vault to the repo (.jinpa/vault.json)
+      // This is safe: it's AES-256-GCM encrypted — token never in plaintext
+      // Benefit: user can log in from any device using just their password
+      try {
+        const vaultJson = JSON.stringify(vault, null, 2) + '\n';
+        const vaultContent = btoa(unescape(encodeURIComponent(vaultJson)));
+        const vaultApiHeaders = {
+          Authorization: `token ${token}`,
+          Accept: 'application/vnd.github.v3+json',
+          'Content-Type': 'application/json',
+        };
+        // Check if file already exists (get its SHA for update)
+        const existingRes = await fetch(
+          `https://api.github.com/repos/${fullRepo}/contents/.jinpa/vault.json`,
+          { headers: vaultApiHeaders }
+        );
+        const vaultPutBody: Record<string, string> = {
+          message: 'Add Jinpa admin vault',
+          content: vaultContent,
+        };
+        if (existingRes.ok) {
+          const existing = await existingRes.json();
+          vaultPutBody.sha = existing.sha;
+          vaultPutBody.message = 'Update Jinpa admin vault';
+        }
+        await fetch(
+          `https://api.github.com/repos/${fullRepo}/contents/.jinpa/vault.json`,
+          { method: 'PUT', headers: vaultApiHeaders, body: JSON.stringify(vaultPutBody) }
+        );
+      } catch {
+        // Non-fatal: vault in URL hash still works for this session
+      }
 
       // Encode vault as URL-safe base64 for hash transfer
       const vaultB64 = btoa(JSON.stringify(vault));

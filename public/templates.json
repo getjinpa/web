@@ -19,6 +19,56 @@
       "preview": "https://getjinpa.github.io/dhc-stillwater/",
       "category": "dharma-center",
       "features": ["events", "programs", "teachers", "responsive"]
+    },
+    {
+      "name": "Lantern",
+      "slug": "teacher",
+      "repo": "getjinpa/lantern",
+      "description": "A dignified personal site for Buddhist teachers and lamas. Biographical pages, teaching archives, upcoming programs, and contact details.",
+      "thumbnail": "/thumbnails/lantern.jpg",
+      "preview": "https://getjinpa.github.io/lantern/",
+      "category": "teacher",
+      "features": ["bio", "schedule", "teachings", "responsive"]
+    },
+    {
+      "name": "Stone Gate",
+      "slug": "monastery",
+      "repo": "getjinpa/stone-gate",
+      "description": "Built for monasteries and retreat centers. Share your history, daily schedule, resident teachings, and invite visitors with a serene minimal design.",
+      "thumbnail": "/thumbnails/stone-gate.jpg",
+      "preview": "https://getjinpa.github.io/stone-gate/",
+      "category": "monastery",
+      "features": ["gallery", "schedule", "responsive", "seo"]
+    },
+    {
+      "name": "Vermillion",
+      "slug": "artist",
+      "repo": "getjinpa/vermillion",
+      "description": "Showcase your visual work — thangka, photography, illustration, sculpture. A portfolio template for Tibetan and Buddhist artists and cultural centers.",
+      "thumbnail": "/thumbnails/vermillion.jpg",
+      "preview": "https://getjinpa.github.io/vermillion/",
+      "category": "artist",
+      "features": ["gallery", "portfolio", "programs", "responsive"]
+    },
+    {
+      "name": "Inkwell",
+      "slug": "writer",
+      "repo": "getjinpa/inkwell",
+      "description": "For authors, scholars, and publishers. Share books, essays, translations, and research in a clean, literary reading-focused layout.",
+      "thumbnail": "/thumbnails/inkwell.jpg",
+      "preview": "https://getjinpa.github.io/inkwell/",
+      "category": "writer",
+      "features": ["archive", "search", "rss", "seo"]
+    },
+    {
+      "name": "Common Ground",
+      "slug": "organization",
+      "repo": "getjinpa/common-ground",
+      "description": "A warm, welcoming template for mindfulness centers, NGOs, and community groups. Programs, team pages, blog, and community-focused design.",
+      "thumbnail": "/thumbnails/common-ground.jpg",
+      "preview": "https://getjinpa.github.io/common-ground/",
+      "category": "organization",
+      "features": ["events", "programs", "contactForm", "responsive"]
     }
   ]
 }
