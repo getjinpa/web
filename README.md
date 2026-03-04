@@ -8,7 +8,7 @@ This is the **Jinpa marketing site and setup wizard**. It is not a template. If 
 
 ## License
 
-**This repository is licensed under the Business Source License 1.1 (BUSL-1.1).**
+**This repository uses a source-available license with restricted commercial use.**
 
 You are free to:
 - Read, study, and learn from this code
@@ -20,11 +20,9 @@ You are **not** permitted to:
 - Build a commercial product derived from this code
 - Deploy this code for commercial purposes
 
-without explicit written permission from the Jinpa Project.
+without explicit written permission from the Jinpa Project. This restriction has no expiry date.
 
-**On March 4, 2030**, this license automatically converts to the MIT License, at which point full open source rights apply.
-
-For commercial licensing inquiries: hello@getjinpa.com
+For commercial licensing inquiries, open a discussion: [github.com/getjinpa/jinpa-starter/discussions](https://github.com/getjinpa/jinpa-starter/discussions)
 
 See [LICENSE](./LICENSE) for the full license text.
 
